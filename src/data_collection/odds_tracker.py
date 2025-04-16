@@ -19,6 +19,7 @@ class OddsTracker:
     def __init__(self, sport='soccer', regions=['uk', 'eu'], markets=['h2h', 'spreads', 'totals'],
                  raw_data_dir='../../data/raw',snapshot_dir = '../../data/snapshots' ,log_file='../../logs/odds_tracker.log'):
         load_dotenv()
+        stats_data_dir = "../../data/stats"
         self.api_key = os.environ.get("ODDS_API_KEY")
         self.sport = sport
         self.regions = regions
@@ -29,7 +30,9 @@ class OddsTracker:
         self.logger.info("OddsTracker initialized")
 
         os.makedirs(raw_data_dir, exist_ok=True)
+        os.makedirs(stats_data_dir, exist_ok=True)
         self.db_path = os.path.join(raw_data_dir, "odds_history.db")
+        self.stats_path = os.path.join(stats_data_dir, "collection_stats.csv")
         self.json_backup_dir = snapshot_dir
         self.setup_database()
 
@@ -180,9 +183,9 @@ class OddsTracker:
             self.logger.info(f"Stored odds data at {current_time}: {events_added} events, {odds_records_added} odds records")
             conn.close()
 
-            stats_file = "../../logs/collection_stats.csv"
-            exists = os.path.exists(stats_file)
-            with open(stats_file, "a") as f:
+
+            exists = os.path.exists(self.stats_path)
+            with open(self.stats_path, "a") as f:
                 if not exists:
                     f.write("timestamp,events,odds_records\n")
                 f.write(f"{current_time},{events_added},{odds_records_added}\n")
