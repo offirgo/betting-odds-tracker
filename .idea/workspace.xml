@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b17cb5c-6c50-4160-9216-b264c958b5a7" name="Changes" comment="project structure + initial req installation">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="7b17cb5c-6c50-4160-9216-b264c958b5a7" name="Changes" comment="changed creation and location of stats path">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_collection/odds_tracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_collection/odds_tracker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,22 +22,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2ufsgxpS6Vgb0FQzbhXMhRtFmN9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.odds_tracker.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.odds_tracker.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/offirgoldstein/dev/PycharmProjects/betting_odds&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="odds_tracker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="betting_odds" />
@@ -94,7 +98,47 @@
       <option name="project" value="LOCAL" />
       <updated>1742652187403</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="first working version, before deploy to cloud">
+      <option name="closed" value="true" />
+      <created>1743360912731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743360912731</updated>
+    </task>
+    <task id="LOCAL-00003" summary="adding gitignroe">
+      <option name="closed" value="true" />
+      <created>1743362131665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743362131665</updated>
+    </task>
+    <task id="LOCAL-00004" summary="git commit -m &quot;Remove .env file from repository&quot;">
+      <option name="closed" value="true" />
+      <created>1743362220755</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743362220755</updated>
+    </task>
+    <task id="LOCAL-00005" summary="new git file for cloud">
+      <option name="closed" value="true" />
+      <created>1744827897535</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744827897535</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changed creation and location of stats path">
+      <option name="closed" value="true" />
+      <created>1744830702913</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1744830702913</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,6 +154,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project structure + initial req installation" />
-    <option name="LAST_COMMIT_MESSAGE" value="project structure + initial req installation" />
+    <MESSAGE value="first working version, before deploy to cloud" />
+    <MESSAGE value="adding gitignroe" />
+    <MESSAGE value="git commit -m &quot;Remove .env file from repository&quot;" />
+    <MESSAGE value="new git file for cloud" />
+    <MESSAGE value="changed creation and location of stats path" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed creation and location of stats path" />
   </component>
 </project>

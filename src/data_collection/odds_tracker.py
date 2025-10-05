@@ -16,8 +16,9 @@ import traceback
 
 
 class OddsTracker:
-    def __init__(self, sport='soccer', regions=['uk', 'eu'], markets=['h2h', 'spreads', 'totals'],
+    def __init__(self, sport='soccer_epl', regions=['uk'], markets=['h2h', 'spreads', 'totals'],
                  raw_data_dir='../../data/raw',snapshot_dir = '../../data/snapshots' ,log_file='../../logs/odds_tracker.log'):
+
         load_dotenv()
         stats_data_dir = "../../data/stats"
         self.api_key = os.environ.get("ODDS_API_KEY")
@@ -31,7 +32,7 @@ class OddsTracker:
 
         os.makedirs(raw_data_dir, exist_ok=True)
         os.makedirs(stats_data_dir, exist_ok=True)
-        self.db_path = os.path.join(raw_data_dir, "odds_history.db")
+        self.db_path = os.path.join(raw_data_dir, "odds_history_temp.db")
         self.stats_path = os.path.join(stats_data_dir, "collection_stats.csv")
         self.json_backup_dir = snapshot_dir
         self.setup_database()
