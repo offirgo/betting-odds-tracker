@@ -147,7 +147,7 @@ class HistoricalOddsCollector:
         return filepath
 
     def collect_date_range(self, start_date_iso, end_date_iso,
-                           time_of_day='12:00:00', delay_seconds=2):
+                           time_of_day='12:00:00', delay_seconds=10):
         """
         Collect snapshots for a range of dates
 
@@ -237,17 +237,12 @@ def main():
 
     collector = HistoricalOddsCollector()
 
-    # Test with a single snapshot first
-    print("\n--- Testing Single Snapshot ---")
-    data = collector.test_single_snapshot()
-
-    print("\n" + "=" * 60)
-    print("Collector ready!")
-    print("  1. ✓ Can fetch historical data from API")
-    print("  2. ✓ Can save to JSON format")
-    print("  3. ✓ Skips existing files to save credits")
-    print("=" * 60)
-
+    collector.collect_date_range(
+        start_date_iso='2024-08-09',
+        end_date_iso='2025-05-25',
+        time_of_day='12:00:00',
+        delay_seconds=10
+    )
 
 if __name__ == "__main__":
     main()

@@ -87,6 +87,31 @@ class JSONToDatabaseLoader:
         )
         ''')
 
+        # Match odds analysis table - one row per match with best odds across all time
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS match_odds_analysis (
+            analysis_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            match_id TEXT NOT NULL,
+            home_snapshot_id INTEGER,
+            draw_snapshot_id INTEGER,
+            away_snapshot_id INTEGER,
+            home_odds REAL,
+            home_bookmaker TEXT,
+            home_days_before REAL,
+            draw_odds REAL,
+            draw_bookmaker TEXT,
+            draw_days_before REAL,
+            away_odds REAL,
+            away_bookmaker TEXT,
+            away_days_before REAL,
+            combined_inverse_odds REAL,
+            potential_profit_percent REAL,
+            discovered_at TEXT,
+            FOREIGN KEY (match_id) REFERENCES matches(match_id)
+        )
+        ''')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_match_analysis ON match_odds_analysis(match_id)')
+
         conn.commit()
         conn.close()
         print(f"Database initialized at: {self.db_path}")
