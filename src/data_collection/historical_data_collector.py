@@ -147,7 +147,7 @@ class HistoricalOddsCollector:
         return filepath
 
     def collect_date_range(self, start_date_iso, end_date_iso,
-                           time_of_day='12:00:00', delay_seconds=10):
+                           time_of_day, delay_seconds=3):
         """
         Collect snapshots for a range of dates
 
@@ -168,23 +168,22 @@ class HistoricalOddsCollector:
 
         while current_date <= end_date:
             # Format date with time
-            date_str = f"{current_date.strftime('%Y-%m-%d')}T{time_of_day}Z"
+            for time_slot in time_of_day:
+                date_str = f"{current_date.strftime('%Y-%m-%d')}T{time_slot}Z"
 
-            # Fetch snapshot (will skip if exists)
-            data = self.fetch_historical_snapshot(date_iso=date_str)
+                # Fetch snapshot (will skip if exists)
+                data = self.fetch_historical_snapshot(date_iso=date_str)
 
-            if data:
-                # Save to JSON
-                filepath = self.save_snapshot_to_json(data,date_iso=date_str)
-                saved_files.append(filepath)
+                if data:
+                    # Save to JSON
+                    filepath = self.save_snapshot_to_json(data,date_iso=date_str)
+                    saved_files.append(filepath)
+                    # Delay to avoid rate limiting (only if we actually made an API call)
+                    print(f"Waiting {delay_seconds} seconds before next request...\n")
+                    time.sleep(delay_seconds)
 
             # Move to next day
             current_date += timedelta(days=1)
-
-            # Delay to avoid rate limiting (only if we actually made an API call)
-            if data and current_date <= end_date:
-                print(f"Waiting {delay_seconds} seconds before next request...\n")
-                time.sleep(delay_seconds)
 
         print(f"\nCompleted! Saved {len(saved_files)} snapshots")
         return saved_files
@@ -238,10 +237,10 @@ def main():
     collector = HistoricalOddsCollector()
 
     collector.collect_date_range(
-        start_date_iso='2024-08-09',
-        end_date_iso='2025-05-25',
-        time_of_day='12:00:00',
-        delay_seconds=10
+        start_date_iso='2021-08-06',
+        end_date_iso='2022-05-22',
+        time_of_day=['08:00:00','16:00:00','23:00:00'],
+        delay_seconds=3
     )
 
 if __name__ == "__main__":
