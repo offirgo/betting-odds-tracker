@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Load saved JSON snapshots into the database
-Separate from API fetching for better modularity
+Automatically detects season from snapshot timestamp
 """
 
 import sqlite3
@@ -69,24 +69,6 @@ class JSONToDatabaseLoader:
         cursor.execute(
             'CREATE INDEX IF NOT EXISTS idx_snapshot_bookmaker ON bookmaker_odds(snapshot_id, bookmaker_key)')
 
-        # Best Odds Analysis table
-        cursor.execute('''
-        CREATE TABLE IF NOT EXISTS best_odds_analysis (
-            analysis_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            snapshot_id INTEGER NOT NULL,
-            best_home_odds REAL,
-            best_home_bookmaker TEXT,
-            best_draw_odds REAL,
-            best_draw_bookmaker TEXT,
-            best_away_odds REAL,
-            best_away_bookmaker TEXT,
-            combined_inverse_odds REAL,
-            arbitrage_opportunity BOOLEAN,
-            potential_profit_percent REAL,
-            FOREIGN KEY (snapshot_id) REFERENCES odds_snapshots(snapshot_id)
-        )
-        ''')
-
         # Match odds analysis table - one row per match with best odds across all time
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS match_odds_analysis (
@@ -127,13 +109,43 @@ class JSONToDatabaseLoader:
 
         return days_before, hours_before
 
-    def load_json_file(self, json_path, season='24/25'):
+    def determine_season_from_date(self, date_str):
+        """
+        Determine EPL season from a date string
+        EPL seasons run from August to May
+
+        Args:
+            date_str: Date string in ISO format (e.g., '2024-08-15T12:00:00Z')
+
+        Returns:
+            Season string like '20/21' or '24/25'
+        """
+        # Parse the date
+        date = datetime.fromisoformat(date_str.replace('Z', '+00:00'))
+        year = date.year
+        month = date.month
+
+        # EPL season starts in August
+        # If month is Aug-Dec (8-12), season is year/year+1
+        # If month is Jan-Jul (1-7), season is year-1/year
+        if month >= 8:
+            season_start = year
+            season_end = year + 1
+        else:
+            season_start = year - 1
+            season_end = year
+
+        # Format as YY/YY (e.g., '24/25')
+        season = f"{str(season_start)[2:]}/{str(season_end)[2:]}"
+        return season
+
+    def load_json_file(self, json_path):
         """
         Load a single JSON snapshot file into the database
+        Season is automatically determined from the match commence time
 
         Args:
             json_path: Path to the JSON file
-            season: Season identifier (e.g., '24/25')
 
         Returns:
             dict: Summary of what was loaded
@@ -160,12 +172,17 @@ class JSONToDatabaseLoader:
         events_added = 0
         snapshots_added = 0
         odds_added = 0
+        seasons_seen = set()
 
         for event in events:
             match_id = event['id']
             home_team = event['home_team']
             away_team = event['away_team']
             commence_time = event['commence_time']
+
+            # Determine season from match commence time
+            season = self.determine_season_from_date(commence_time)
+            seasons_seen.add(season)
 
             # Calculate time before match
             days_before, hours_before = self.calculate_time_before_match(
@@ -192,8 +209,7 @@ class JSONToDatabaseLoader:
             existing = cursor.fetchone()
 
             if existing:
-                print(f"  Snapshot already exists for match {match_id} at {snapshot_time}, skipping...")
-                continue
+                continue  # Skip silently to reduce output
 
             # Insert odds snapshot
             cursor.execute('''
@@ -204,11 +220,6 @@ class JSONToDatabaseLoader:
 
             snapshot_id = cursor.lastrowid
             snapshots_added += 1
-
-            # Track best odds for this snapshot
-            best_home = {'odds': 0, 'bookmaker': None}
-            best_draw = {'odds': 0, 'bookmaker': None}
-            best_away = {'odds': 0, 'bookmaker': None}
 
             # Process bookmaker odds
             for bookmaker in event.get('bookmakers', []):
@@ -235,14 +246,6 @@ class JSONToDatabaseLoader:
                             implied_prob_sum = (1 / home_odds) + (1 / draw_odds) + (1 / away_odds)
                             margin = (implied_prob_sum - 1) * 100
 
-                            # Track best odds
-                            if home_odds > best_home['odds']:
-                                best_home = {'odds': home_odds, 'bookmaker': bookmaker_key}
-                            if draw_odds > best_draw['odds']:
-                                best_draw = {'odds': draw_odds, 'bookmaker': bookmaker_key}
-                            if away_odds > best_away['odds']:
-                                best_away = {'odds': away_odds, 'bookmaker': bookmaker_key}
-
                             # Insert odds
                             cursor.execute('''
                             INSERT INTO bookmaker_odds 
@@ -256,25 +259,6 @@ class JSONToDatabaseLoader:
 
                             odds_added += 1
 
-            # Store best odds analysis
-            if all([best_home['odds'], best_draw['odds'], best_away['odds']]):
-                combined_inverse = (1 / best_home['odds']) + (1 / best_draw['odds']) + (1 / best_away['odds'])
-                is_arbitrage = combined_inverse < 1.0
-                profit_percent = ((1 - combined_inverse) * 100) if is_arbitrage else 0
-
-                cursor.execute('''
-                INSERT INTO best_odds_analysis
-                (snapshot_id, best_home_odds, best_home_bookmaker,
-                 best_draw_odds, best_draw_bookmaker,
-                 best_away_odds, best_away_bookmaker,
-                 combined_inverse_odds, arbitrage_opportunity, potential_profit_percent)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ''', (snapshot_id,
-                      best_home['odds'], best_home['bookmaker'],
-                      best_draw['odds'], best_draw['bookmaker'],
-                      best_away['odds'], best_away['bookmaker'],
-                      combined_inverse, is_arbitrage, profit_percent))
-
         conn.commit()
         conn.close()
 
@@ -282,19 +266,22 @@ class JSONToDatabaseLoader:
             'success': True,
             'events': events_added,
             'snapshots': snapshots_added,
-            'odds_records': odds_added
+            'odds_records': odds_added,
+            'seasons': list(seasons_seen)
         }
 
         print(f"  ✓ Loaded: {events_added} events, {snapshots_added} snapshots, {odds_added} odds records")
+        if seasons_seen:
+            print(f"  ✓ Seasons detected: {sorted(seasons_seen)}")
         return summary
 
-    def load_directory(self, json_dir='../../data/historical_snapshots', season='24/25'):
+    def load_directory(self, json_dir='../../data/historical_snapshots'):
         """
         Load all JSON files from a directory
+        Season is automatically detected from match commence times
 
         Args:
             json_dir: Directory containing JSON files
-            season: Season identifier
 
         Returns:
             list: Summary for each file loaded
@@ -310,9 +297,13 @@ class JSONToDatabaseLoader:
         print("=" * 60)
 
         results = []
+        all_seasons = set()
+
         for json_file in sorted(json_files):
-            result = self.load_json_file(json_file, season)
+            result = self.load_json_file(json_file)
             results.append(result)
+            if result.get('seasons'):
+                all_seasons.update(result['seasons'])
 
         print("\n" + "=" * 60)
         print("SUMMARY:")
@@ -324,6 +315,7 @@ class JSONToDatabaseLoader:
         print(f"  Total events: {total_events}")
         print(f"  Total snapshots: {total_snapshots}")
         print(f"  Total odds records: {total_odds}")
+        print(f"  Seasons detected: {sorted(all_seasons)}")
 
         return results
 
@@ -341,23 +333,34 @@ class JSONToDatabaseLoader:
         cursor.execute("SELECT COUNT(*) FROM bookmaker_odds")
         odds_count = cursor.fetchone()[0]
 
-        cursor.execute("SELECT COUNT(*) FROM best_odds_analysis WHERE arbitrage_opportunity = 1")
-        arbitrage_count = cursor.fetchone()[0]
+        cursor.execute("SELECT DISTINCT season FROM matches ORDER BY season")
+        seasons = [row[0] for row in cursor.fetchall()]
+
+        cursor.execute("""
+            SELECT season, COUNT(*) as count 
+            FROM matches 
+            GROUP BY season 
+            ORDER BY season
+        """)
+        season_counts = cursor.fetchall()
 
         conn.close()
 
         print("\n" + "=" * 60)
         print("DATABASE VERIFICATION:")
-        print(f"  Matches: {match_count}")
-        print(f"  Snapshots: {snapshot_count}")
-        print(f"  Odds records: {odds_count}")
-        print(f"  Arbitrage opportunities: {arbitrage_count}")
+        print(f"  Total matches: {match_count}")
+        print(f"  Total snapshots: {snapshot_count}")
+        print(f"  Total odds records: {odds_count}")
+        print(f"\n  Seasons in database: {seasons}")
+        print(f"\n  Matches per season:")
+        for season, count in season_counts:
+            print(f"    {season}: {count} matches")
         print("=" * 60)
 
 
 def main():
     """Test loading JSON into database"""
-    print("JSON to Database Loader - Testing")
+    print("JSON to Database Loader - Auto Season Detection")
     print("=" * 60)
 
     # Initialize loader
