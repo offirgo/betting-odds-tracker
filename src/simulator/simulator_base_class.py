@@ -188,22 +188,6 @@ class BettingSimulator:
 
         except Exception as e:
             logger.error(f"Error in _load_models: {e}")
-            self.thresholds[name]}")
-            except Exception as e:
-            logger.error(f"Error loading {name} threshold: {e}")
-            # Set default threshold
-            self.thresholds[name] = 0.5
-
-        # Log missing models
-        required_models = ['should_bet', 'home_timing', 'draw_timing', 'away_timing']
-        missing_models = [name for name in required_models if name not in self.models]
-        if missing_models:
-            logger.warning(f"Missing required models: {missing_models}")
-        else:
-            logger.info("All required models loaded successfully")
-
-    except Exception as e:
-    logger.error(f"Error in _load_models: {e}")
 
 
 def connect_to_db(self):

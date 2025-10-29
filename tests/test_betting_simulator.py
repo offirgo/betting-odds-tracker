@@ -19,7 +19,7 @@ import logging
 
 # Add parent directory to path to import BettingSimulator
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from   betting_simulator import BettingSimulator
+from src.simulator.simulator_base_class import BettingSimulator
 
 # Configure logging
 logging.basicConfig(
