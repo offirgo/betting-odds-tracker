@@ -190,289 +190,289 @@ class BettingSimulator:
             logger.error(f"Error in _load_models: {e}")
 
 
-def connect_to_db(self):
-    """Connect to the SQLite database."""
-    try:
-        conn = sqlite3.connect(self.db_path)
-        return conn
-    except Exception as e:
-        logger.error(f"Error connecting to database: {e}")
-        return None
+    def connect_to_db(self):
+        """Connect to the SQLite database."""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            return conn
+        except Exception as e:
+            logger.error(f"Error connecting to database: {e}")
+            return None
 
 
-def get_simulation_timespan(self):
-    """
-    Get the available time range in the database for simulation.
+    def get_simulation_timespan(self):
+        """
+        Get the available time range in the database for simulation.
 
-    Returns:
-        tuple: (earliest_time, latest_time) as datetime objects
-    """
-    conn = self.connect_to_db()
-    if not conn:
-        return None, None
+        Returns:
+            tuple: (earliest_time, latest_time) as datetime objects
+        """
+        conn = self.connect_to_db()
+        if not conn:
+            return None, None
 
-    try:
-        cursor = conn.cursor()
+        try:
+            cursor = conn.cursor()
 
-        # Get earliest timestamp
-        cursor.execute("SELECT MIN(timestamp) FROM odds_history")
-        earliest = cursor.fetchone()[0]
+            # Get earliest timestamp
+            cursor.execute("SELECT MIN(timestamp) FROM odds_history")
+            earliest = cursor.fetchone()[0]
 
-        # Get latest timestamp
-        cursor.execute("SELECT MAX(timestamp) FROM odds_history")
-        latest = cursor.fetchone()[0]
+            # Get latest timestamp
+            cursor.execute("SELECT MAX(timestamp) FROM odds_history")
+            latest = cursor.fetchone()[0]
 
-        # Get earliest and latest commence times
-        cursor.execute("SELECT MIN(commence_time), MAX(commence_time) FROM events")
-        earliest_match, latest_match = cursor.fetchone()
+            # Get earliest and latest commence times
+            cursor.execute("SELECT MIN(commence_time), MAX(commence_time) FROM events")
+            earliest_match, latest_match = cursor.fetchone()
 
-        # Convert to datetime objects
-        earliest_time = datetime.fromisoformat(earliest.replace('Z', '+00:00'))
-        latest_time = datetime.fromisoformat(latest.replace('Z', '+00:00'))
-        earliest_match_time = datetime.fromisoformat(earliest_match.replace('Z', '+00:00'))
-        latest_match_time = datetime.fromisoformat(latest_match.replace('Z', '+00:00'))
+            # Convert to datetime objects
+            earliest_time = datetime.fromisoformat(earliest.replace('Z', '+00:00'))
+            latest_time = datetime.fromisoformat(latest.replace('Z', '+00:00'))
+            earliest_match_time = datetime.fromisoformat(earliest_match.replace('Z', '+00:00'))
+            latest_match_time = datetime.fromisoformat(latest_match.replace('Z', '+00:00'))
 
-        logger.info(f"Database contains odds from {earliest_time} to {latest_time}")
-        logger.info(f"Matches in database from {earliest_match_time} to {latest_match_time}")
+            logger.info(f"Database contains odds from {earliest_time} to {latest_time}")
+            logger.info(f"Matches in database from {earliest_match_time} to {latest_match_time}")
 
-        return earliest_time, latest_time
+            return earliest_time, latest_time
 
-    except Exception as e:
-        logger.error(f"Error getting simulation timespan: {e}")
-        return None, None
-    finally:
-        conn.close()
-
-
-def get_events_in_timerange(self, start_time, end_time, limit=None):
-    """
-    Get all events that start between start_time and end_time.
-
-    Args:
-        start_time (datetime): Start of the time range
-        end_time (datetime): End of the time range
-        limit (int, optional): Maximum number of events to return
-
-    Returns:
-        list: List of event dictionaries
-    """
-    conn = self.connect_to_db()
-    if not conn:
-        return []
-
-    try:
-        cursor = conn.cursor()
-
-        # Format datetime objects for SQLite query
-        start_str = start_time.isoformat()
-        end_str = end_time.isoformat()
-
-        # Build query
-        query = """
-                SELECT e.event_id, e.home_team, e.away_team, e.commence_time, e.sport,
-                       COUNT(DISTINCT oh.bookmaker) as bookmaker_count
-                FROM events e
-                JOIN odds_history oh ON e.event_id = oh.event_id
-                WHERE e.commence_time BETWEEN ? AND ?
-                GROUP BY e.event_id
-                HAVING bookmaker_count > 0
-                ORDER BY e.commence_time
-            """
-
-        # Add limit if specified
-        if limit:
-            query += f" LIMIT {int(limit)}"
-
-        # Execute query
-        cursor.execute(query, (start_str, end_str))
-
-        events = []
-        for row in cursor.fetchall():
-            event_id, home_team, away_team, commence_time, sport, bookmaker_count = row
-
-            # Convert ISO string to datetime
-            commence_dt = datetime.fromisoformat(commence_time.replace('Z', '+00:00'))
-
-            event = {
-                'event_id': event_id,
-                'home_team': home_team,
-                'away_team': away_team,
-                'commence_time': commence_dt,
-                'sport': sport,
-                'bookmaker_count': bookmaker_count,
-                'state': 'new',  # Initial state for simulation tracking
-                'bets': [],  # Will store bets placed during simulation
-            }
-            events.append(event)
-
-        logger.info(f"Found {len(events)} events between {start_time} and {end_time}")
-        return events
-
-    except Exception as e:
-        logger.error(f"Error getting events in timerange: {e}")
-        return []
-    finally:
-        conn.close()
+        except Exception as e:
+            logger.error(f"Error getting simulation timespan: {e}")
+            return None, None
+        finally:
+            conn.close()
 
 
-def get_odds_snapshots(self, event_id, before_time=None):
-    """
-    Get all odds snapshots for an event, optionally before a specific time.
+    def get_events_in_timerange(self, start_time, end_time, limit=None):
+        """
+        Get all events that start between start_time and end_time.
 
-    Args:
-        event_id (str): ID of the event
-        before_time (datetime, optional): Only get snapshots before this time
+        Args:
+            start_time (datetime): Start of the time range
+            end_time (datetime): End of the time range
+            limit (int, optional): Maximum number of events to return
 
-    Returns:
-        list: List of odds snapshots sorted by timestamp
-    """
-    conn = self.connect_to_db()
-    if not conn:
-        return []
+        Returns:
+            list: List of event dictionaries
+        """
+        conn = self.connect_to_db()
+        if not conn:
+            return []
 
-    try:
-        cursor = conn.cursor()
+        try:
+            cursor = conn.cursor()
 
-        # Build base query
-        query = """
-                SELECT oh.timestamp, oh.bookmaker, oh.market, oh.outcome, oh.price
-                FROM odds_history oh
-                WHERE oh.event_id = ?
-            """
+            # Format datetime objects for SQLite query
+            start_str = start_time.isoformat()
+            end_str = end_time.isoformat()
 
-        params = [event_id]
+            # Build query
+            query = """
+                    SELECT e.event_id, e.home_team, e.away_team, e.commence_time, e.sport,
+                           COUNT(DISTINCT oh.bookmaker) as bookmaker_count
+                    FROM events e
+                    JOIN odds_history oh ON e.event_id = oh.event_id
+                    WHERE e.commence_time BETWEEN ? AND ?
+                    GROUP BY e.event_id
+                    HAVING bookmaker_count > 0
+                    ORDER BY e.commence_time
+                """
 
-        # Add time constraint if specified
-        if before_time:
-            query += " AND oh.timestamp <= ?"
-            params.append(before_time.isoformat())
+            # Add limit if specified
+            if limit:
+                query += f" LIMIT {int(limit)}"
 
-        # Order by timestamp
-        query += " ORDER BY oh.timestamp"
+            # Execute query
+            cursor.execute(query, (start_str, end_str))
 
-        # Execute query
-        cursor.execute(query, params)
+            events = []
+            for row in cursor.fetchall():
+                event_id, home_team, away_team, commence_time, sport, bookmaker_count = row
 
-        # Organize results by timestamp
-        snapshots = {}
-        for row in cursor.fetchall():
-            timestamp, bookmaker, market, outcome, price = row
+                # Convert ISO string to datetime
+                commence_dt = datetime.fromisoformat(commence_time.replace('Z', '+00:00'))
 
-            # Convert ISO string to datetime
-            timestamp_dt = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
-
-            # Create timestamp entry if it doesn't exist
-            if timestamp_dt not in snapshots:
-                snapshots[timestamp_dt] = {
-                    'timestamp': timestamp_dt,
-                    'markets': {}
+                event = {
+                    'event_id': event_id,
+                    'home_team': home_team,
+                    'away_team': away_team,
+                    'commence_time': commence_dt,
+                    'sport': sport,
+                    'bookmaker_count': bookmaker_count,
+                    'state': 'new',  # Initial state for simulation tracking
+                    'bets': [],  # Will store bets placed during simulation
                 }
+                events.append(event)
 
-            # Create market entry if it doesn't exist
-            if market not in snapshots[timestamp_dt]['markets']:
-                snapshots[timestamp_dt]['markets'][market] = {}
+            logger.info(f"Found {len(events)} events between {start_time} and {end_time}")
+            return events
 
-            # Create outcome entry if it doesn't exist
-            if outcome not in snapshots[timestamp_dt]['markets'][market]:
-                snapshots[timestamp_dt]['markets'][market][outcome] = {}
-
-            # Add bookmaker price
-            snapshots[timestamp_dt]['markets'][market][outcome][bookmaker] = price
-
-        # Convert to sorted list
-        snapshot_list = [snapshots[ts] for ts in sorted(snapshots.keys())]
-
-        return snapshot_list
-
-    except Exception as e:
-        logger.error(f"Error getting odds snapshots for event {event_id}: {e}")
-        return []
-    finally:
-        conn.close()
+        except Exception as e:
+            logger.error(f"Error getting events in timerange: {e}")
+            return []
+        finally:
+            conn.close()
 
 
-def extract_features(self, event, snapshots, current_time):
-    """
-    Extract features for model predictions from event and odds snapshots.
+    def get_odds_snapshots(self, event_id, before_time=None):
+        """
+        Get all odds snapshots for an event, optionally before a specific time.
 
-    Args:
-        event (dict): Event information
-        snapshots (list): List of odds snapshots
-        current_time (datetime): Current simulation time
+        Args:
+            event_id (str): ID of the event
+            before_time (datetime, optional): Only get snapshots before this time
 
-    Returns:
-        dict: Features for model input
-    """
-    # This is a simplified implementation - actual feature extraction
-    # should match exactly what was used in model training
+        Returns:
+            list: List of odds snapshots sorted by timestamp
+        """
+        conn = self.connect_to_db()
+        if not conn:
+            return []
 
-    features = {}
+        try:
+            cursor = conn.cursor()
 
-    # Skip if no snapshots
-    if not snapshots:
-        return None
+            # Build base query
+            query = """
+                    SELECT oh.timestamp, oh.bookmaker, oh.market, oh.outcome, oh.price
+                    FROM odds_history oh
+                    WHERE oh.event_id = ?
+                """
 
-    # Get timing features
-    hours_until_start = (event['commence_time'] - current_time).total_seconds() / 3600
-    features['days_before_match'] = hours_until_start / 24
-    features['hours_before_match'] = hours_until_start
+            params = [event_id]
 
-    # Use the most recent snapshot for current odds
-    latest_snapshot = snapshots[-1]
+            # Add time constraint if specified
+            if before_time:
+                query += " AND oh.timestamp <= ?"
+                params.append(before_time.isoformat())
 
-    # Only proceed if we have h2h market
-    if 'h2h' in latest_snapshot['markets']:
-        h2h_market = latest_snapshot['markets']['h2h']
+            # Order by timestamp
+            query += " ORDER BY oh.timestamp"
 
-        # Get best current odds for each outcome
-        if 'home' in h2h_market:
-            home_odds = list(h2h_market['home'].values())
-            if home_odds:
-                features['home_odds_current'] = max(home_odds)
+            # Execute query
+            cursor.execute(query, params)
 
-        if 'draw' in h2h_market:
-            draw_odds = list(h2h_market['draw'].values())
-            if draw_odds:
-                features['draw_odds_current'] = max(draw_odds)
+            # Organize results by timestamp
+            snapshots = {}
+            for row in cursor.fetchall():
+                timestamp, bookmaker, market, outcome, price = row
 
-        if 'away' in h2h_market:
-            away_odds = list(h2h_market['away'].values())
-            if away_odds:
-                features['away_odds_current'] = max(away_odds)
+                # Convert ISO string to datetime
+                timestamp_dt = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
 
-        # Calculate combined inverse (arbitrage indicator)
-        all_odds = []
+                # Create timestamp entry if it doesn't exist
+                if timestamp_dt not in snapshots:
+                    snapshots[timestamp_dt] = {
+                        'timestamp': timestamp_dt,
+                        'markets': {}
+                    }
+
+                # Create market entry if it doesn't exist
+                if market not in snapshots[timestamp_dt]['markets']:
+                    snapshots[timestamp_dt]['markets'][market] = {}
+
+                # Create outcome entry if it doesn't exist
+                if outcome not in snapshots[timestamp_dt]['markets'][market]:
+                    snapshots[timestamp_dt]['markets'][market][outcome] = {}
+
+                # Add bookmaker price
+                snapshots[timestamp_dt]['markets'][market][outcome][bookmaker] = price
+
+            # Convert to sorted list
+            snapshot_list = [snapshots[ts] for ts in sorted(snapshots.keys())]
+
+            return snapshot_list
+
+        except Exception as e:
+            logger.error(f"Error getting odds snapshots for event {event_id}: {e}")
+            return []
+        finally:
+            conn.close()
+
+
+    def extract_features(self, event, snapshots, current_time):
+        """
+        Extract features for model predictions from event and odds snapshots.
+
+        Args:
+            event (dict): Event information
+            snapshots (list): List of odds snapshots
+            current_time (datetime): Current simulation time
+
+        Returns:
+            dict: Features for model input
+        """
+        # This is a simplified implementation - actual feature extraction
+        # should match exactly what was used in model training
+
+        features = {}
+
+        # Skip if no snapshots
+        if not snapshots:
+            return None
+
+        # Get timing features
+        hours_until_start = (event['commence_time'] - current_time).total_seconds() / 3600
+        features['days_before_match'] = hours_until_start / 24
+        features['hours_before_match'] = hours_until_start
+
+        # Use the most recent snapshot for current odds
+        latest_snapshot = snapshots[-1]
+
+        # Only proceed if we have h2h market
+        if 'h2h' in latest_snapshot['markets']:
+            h2h_market = latest_snapshot['markets']['h2h']
+
+            # Get best current odds for each outcome
+            if 'home' in h2h_market:
+                home_odds = list(h2h_market['home'].values())
+                if home_odds:
+                    features['home_odds_current'] = max(home_odds)
+
+            if 'draw' in h2h_market:
+                draw_odds = list(h2h_market['draw'].values())
+                if draw_odds:
+                    features['draw_odds_current'] = max(draw_odds)
+
+            if 'away' in h2h_market:
+                away_odds = list(h2h_market['away'].values())
+                if away_odds:
+                    features['away_odds_current'] = max(away_odds)
+
+            # Calculate combined inverse (arbitrage indicator)
+            all_odds = []
+            for outcome in ['home', 'draw', 'away']:
+                if outcome in h2h_market and h2h_market[outcome]:
+                    all_odds.append(max(h2h_market[outcome].values()))
+
+            if len(all_odds) == 3:  # Only if we have all three outcomes
+                features['combined_inverse_current'] = sum(1 / o for o in all_odds)
+
+        # Get historical odds stats
+        features['num_snapshots_seen'] = len(snapshots)
+
+        # Calculate historical stats for each outcome
         for outcome in ['home', 'draw', 'away']:
-            if outcome in h2h_market and h2h_market[outcome]:
-                all_odds.append(max(h2h_market[outcome].values()))
+            prices = []
 
-        if len(all_odds) == 3:  # Only if we have all three outcomes
-            features['combined_inverse_current'] = sum(1 / o for o in all_odds)
+            for snapshot in snapshots:
+                if 'h2h' in snapshot['markets'] and outcome in snapshot['markets']['h2h']:
+                    outcome_prices = list(snapshot['markets']['h2h'][outcome].values())
+                    if outcome_prices:
+                        prices.append(max(outcome_prices))
 
-    # Get historical odds stats
-    features['num_snapshots_seen'] = len(snapshots)
+            if prices:
+                features[f'{outcome}_odds_mean_historical'] = np.mean(prices)
+                features[f'{outcome}_odds_std_historical'] = np.std(prices)
+                features[f'{outcome}_odds_min_historical'] = min(prices)
+                features[f'{outcome}_odds_max_historical'] = max(prices)
 
-    # Calculate historical stats for each outcome
-    for outcome in ['home', 'draw', 'away']:
-        prices = []
+        # Placeholder for team IDs - in a real implementation, you would have a mapping
+        features['home_team_id'] = hash(event['home_team']) % 1000
+        features['away_team_id'] = hash(event['away_team']) % 1000
 
-        for snapshot in snapshots:
-            if 'h2h' in snapshot['markets'] and outcome in snapshot['markets']['h2h']:
-                outcome_prices = list(snapshot['markets']['h2h'][outcome].values())
-                if outcome_prices:
-                    prices.append(max(outcome_prices))
-
-        if prices:
-            features[f'{outcome}_odds_mean_historical'] = np.mean(prices)
-            features[f'{outcome}_odds_std_historical'] = np.std(prices)
-            features[f'{outcome}_odds_min_historical'] = min(prices)
-            features[f'{outcome}_odds_max_historical'] = max(prices)
-
-    # Placeholder for team IDs - in a real implementation, you would have a mapping
-    features['home_team_id'] = hash(event['home_team']) % 1000
-    features['away_team_id'] = hash(event['away_team']) % 1000
-
-    return features
+        return features
 
 
 def prepare_features_df(self, features_dict):
@@ -520,66 +520,66 @@ def prepare_features_df(self, features_dict):
     return df
 
 
-def run_simulation(self, start_date, end_date, initial_bankroll, profit_margin=0.03, output_file=None,
-                   profit_margins=None):
-    """
-    Run the betting simulation from start_date to end_date.
+    def run_simulation(self, start_date, end_date, initial_bankroll, profit_margin=0.03, output_file=None,
+                       profit_margins=None):
+        """
+        Run the betting simulation from start_date to end_date.
 
-    Args:
-        start_date (datetime): Start date of simulation
-        end_date (datetime): End date of simulation
-        initial_bankroll (float): Starting bankroll amount
-        profit_margin (float): Target profit margin for arbitrage (default 3%)
-        output_file (str, optional): Path to save detailed results
-        profit_margins (list, optional): List of profit margins to test (e.g. [0.01, 0.02, 0.03, 0.05])
-                                       If provided, runs multiple simulations with different margins
+        Args:
+            start_date (datetime): Start date of simulation
+            end_date (datetime): End date of simulation
+            initial_bankroll (float): Starting bankroll amount
+            profit_margin (float): Target profit margin for arbitrage (default 3%)
+            output_file (str, optional): Path to save detailed results
+            profit_margins (list, optional): List of profit margins to test (e.g. [0.01, 0.02, 0.03, 0.05])
+                                           If provided, runs multiple simulations with different margins
 
-    Returns:
-        dict or list: Simulation results for single run or multiple runs with different margins
-    """
-    # If profit_margins is provided, run multiple simulations
-    if profit_margins and isinstance(profit_margins, list):
-        logger.info(f"Running multiple simulations with profit margins: {profit_margins}")
+        Returns:
+            dict or list: Simulation results for single run or multiple runs with different margins
+        """
+        # If profit_margins is provided, run multiple simulations
+        if profit_margins and isinstance(profit_margins, list):
+            logger.info(f"Running multiple simulations with profit margins: {profit_margins}")
 
-        all_results = []
+            all_results = []
 
-        for margin in profit_margins:
-            logger.info(f"Running simulation with profit margin: {margin:.1%}")
+            for margin in profit_margins:
+                logger.info(f"Running simulation with profit margin: {margin:.1%}")
 
-            # Run simulation with this margin
-            result = self._run_single_simulation(start_date, end_date, initial_bankroll, margin)
+                # Run simulation with this margin
+                result = self._run_single_simulation(start_date, end_date, initial_bankroll, margin)
 
-            # Add margin info to result
-            result['profit_margin'] = margin
-            all_results.append(result)
+                # Add margin info to result
+                result['profit_margin'] = margin
+                all_results.append(result)
 
-            # If output file provided, save each result
+                # If output file provided, save each result
+                if output_file:
+                    margin_output = output_file.replace('.json', f'_margin_{margin:.3f}.json')
+                    with open(margin_output, 'w') as f:
+                        json.dump(result, f, default=str, indent=2)
+
+            # Sort results by profit
+            all_results.sort(key=lambda x: x['profit'], reverse=True)
+
+            # Create summary comparing results
+            summary = {
+                'best_margin': all_results[0]['profit_margin'],
+                'best_profit': all_results[0]['profit'],
+                'best_roi': all_results[0]['roi'],
+                'all_results': all_results
+            }
+
+            # Save summary if output file provided
             if output_file:
-                margin_output = output_file.replace('.json', f'_margin_{margin:.3f}.json')
-                with open(margin_output, 'w') as f:
-                    json.dump(result, f, default=str, indent=2)
+                summary_output = output_file.replace('.json', '_summary.json')
+                with open(summary_output, 'w') as f:
+                    json.dump(summary, f, default=str, indent=2)
 
-        # Sort results by profit
-        all_results.sort(key=lambda x: x['profit'], reverse=True)
+            return summary
 
-        # Create summary comparing results
-        summary = {
-            'best_margin': all_results[0]['profit_margin'],
-            'best_profit': all_results[0]['profit'],
-            'best_roi': all_results[0]['roi'],
-            'all_results': all_results
-        }
-
-        # Save summary if output file provided
-        if output_file:
-            summary_output = output_file.replace('.json', '_summary.json')
-            with open(summary_output, 'w') as f:
-                json.dump(summary, f, default=str, indent=2)
-
-        return summary
-
-    # Otherwise run single simulation
-    return self._run_single_simulation(start_date, end_date, initial_bankroll, profit_margin, output_file)
+        # Otherwise run single simulation
+        return self._run_single_simulation(start_date, end_date, initial_bankroll, profit_margin, output_file)
 
 
 def _run_single_simulation(self, start_date, end_date, initial_bankroll, profit_margin, output_file=None):
