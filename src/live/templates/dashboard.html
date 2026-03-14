@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Arbitrage Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-value.green {
+            color: #10b981;
+        }
+
+        .stat-value.red {
+            color: #ef4444;
+        }
+
+        .stat-value.blue {
+            color: #3b82f6;
+        }
+
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:disabled {
+            background: #475569;
+            cursor: not-allowed;
+        }
+
+        .section {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .match-card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .match-teams {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .match-time {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .odds-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .odds-box {
+            background: #1e293b;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+
+        .odds-label {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            margin-bottom: 5px;
+        }
+
+        .odds-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .badge.success {
+            background: #10b981;
+            color: white;
+        }
+
+        .badge.warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .badge.info {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .badge.danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .prediction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .prediction-box {
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #334155;
+        }
+
+        .prediction-box.active {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .recommendation {
+            margin-top: 15px;
+            padding: 15px;
+            background: #1e293b;
+            border-left: 4px solid #3b82f6;
+            border-radius: 4px;
+        }
+
+        .recommendation.bet-now {
+            border-left-color: #10b981;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+
+        .spinner {
+            border: 3px solid #334155;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .last-update {
+            color: #64748b;
+            font-size: 0.875rem;
+            text-align: right;
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>🎯 Live Arbitrage Dashboard</h1>
+                <div class="subtitle">EPL Betting Opportunities - ML-Powered</div>
+            </div>
+            <div>
+                <button id="fetchBtn" onclick="fetchOdds()">Refresh Odds</button>
+            </div>
+        </div>
+
+        <div id="errorMsg" class="error" style="display: none;"></div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Active Opportunities</div>
+                <div class="stat-value green" id="opportunitiesCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Avg Profit %</div>
+                <div class="stat-value blue" id="avgProfit">0.00%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">API Requests Left</div>
+                <div class="stat-value" id="apiQuota">---</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Bets Tracked</div>
+                <div class="stat-value" id="betsPlaced">0</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Live Opportunities</div>
+            <div class="last-update">Last updated: <span id="lastUpdate">Never</span></div>
+
+            <div id="matchesContainer"></div>
+
+            <div id="loadingState" style="display: none;">
+                <div class="spinner"></div>
+                <div style="text-align: center; color: #64748b;">Fetching live odds...</div>
+            </div>
+
+            <div id="emptyState" class="empty-state">
+                <div style="font-size: 3rem; margin-bottom: 10px;">📊</div>
+                <div>No matches loaded yet</div>
+                <div style="font-size: 0.875rem; margin-top: 5px;">Click "Refresh Odds" to fetch live EPL matches</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentData = { matches: [], predictions: [] };
+
+        async function fetchOdds() {
+            const btn = document.getElementById('fetchBtn');
+            const loadingState = document.getElementById('loadingState');
+            const emptyState = document.getElementById('emptyState');
+            const errorMsg = document.getElementById('errorMsg');
+
+            btn.disabled = true;
+            btn.textContent = 'Fetching...';
+            loadingState.style.display = 'block';
+            emptyState.style.display = 'none';
+            errorMsg.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/fetch_odds', { method: 'POST' });
+                const result = await response.json();
+
+                if (result.error) {
+                    showError(result.error);
+                } else {
+                    await loadMatches();
+                }
+            } catch (error) {
+                showError('Failed to fetch odds: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Refresh Odds';
+                loadingState.style.display = 'none';
+            }
+        }
+
+        async function loadMatches() {
+            try {
+                const response = await fetch('/api/matches');
+                const data = await response.json();
+
+                currentData = data;
+                renderMatches();
+                updateStats();
+                updateLastUpdate(data.last_update);
+            } catch (error) {
+                showError('Failed to load matches: ' + error.message);
+            }
+        }
+
+        function renderMatches() {
+            const container = document.getElementById('matchesContainer');
+            const emptyState = document.getElementById('emptyState');
+
+            if (!currentData.predictions || currentData.predictions.length === 0) {
+                container.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            container.innerHTML = currentData.predictions.map(pred => createMatchCard(pred)).join('');
+        }
+
+        function createMatchCard(analysis) {
+            const arb = analysis.arbitrage;
+            const rec = analysis.recommendation;
+            const odds = analysis.current_odds;
+            const timing = analysis.timing_predictions;
+
+            const arbBadge = arb.exists
+                ? `<span class="badge success">✓ ARB ${arb.profit_pct.toFixed(2)}%</span>`
+                : `<span class="badge danger">✗ No ARB</span>`;
+
+            const actionBadge = rec.action === 'BET_NOW'
+                ? `<span class="badge success">BET NOW</span>`
+                : rec.action === 'PREPARE'
+                ? `<span class="badge warning">PREPARE</span>`
+                : `<span class="badge info">WAIT</span>`;
+
+            const timingHTML = Object.entries(timing).map(([outcome, pred]) => `
+                <div class="prediction-box ${pred.should_bet_now ? 'active' : ''}">
+                    <div class="odds-label">${outcome.toUpperCase()}</div>
+                    <div style="font-size: 1.1rem; color: ${pred.should_bet_now ? '#10b981' : '#94a3b8'}">
+                        ${pred.should_bet_now ? '✓' : '✗'} ${(pred.probability * 100).toFixed(1)}%
+                    </div>
+                    <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">
+                        T: ${(pred.threshold * 100).toFixed(1)}%
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="match-card">
+                    <div class="match-header">
+                        <div class="match-teams">${analysis.home_team} vs ${analysis.away_team}</div>
+                        <div class="match-time">${formatTime(analysis.commence_time)}</div>
+                    </div>
+
+                    <div>${arbBadge}${actionBadge}</div>
+
+                    <div class="odds-grid">
+                        <div class="odds-box">
+                            <div class="odds-label">HOME</div>
+                            <div class="odds-value">${odds.home.toFixed(2)}</div>
+                        </div>
+                        <div class="odds-box">
+                            <div class="odds-label">DRAW</div>
+                            <div class="odds-value">${odds.draw.toFixed(2)}</div>
+                        </div>
+                        <div class="odds-box">
+                            <div class="odds-label">AWAY</div>
+                            <div class="odds-value">${odds.away.toFixed(2)}</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px; color: #94a3b8; font-size: 0.875rem;">
+                        <strong>ML Timing Signals:</strong>
+                    </div>
+                    <div class="prediction-grid">${timingHTML}</div>
+
+                    <div class="recommendation ${rec.action === 'BET_NOW' ? 'bet-now' : ''}">
+                        <strong style="color: #fff;">${rec.action.replace('_', ' ')}</strong>
+                        <div style="margin-top: 8px; font-size: 0.875rem; color: #cbd5e1;">
+                            ${rec.reason}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateStats() {
+            const opportunities = currentData.predictions?.filter(p => p.arbitrage.exists).length || 0;
+            const avgProfit = opportunities > 0
+                ? currentData.predictions.reduce((sum, p) => sum + p.arbitrage.profit_pct, 0) / currentData.predictions.length
+                : 0;
+
+            document.getElementById('opportunitiesCount').textContent = opportunities;
+            document.getElementById('avgProfit').textContent = avgProfit.toFixed(2) + '%';
+        }
+
+        async function loadStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+
+                if (data.api_quota) {
+                    document.getElementById('apiQuota').textContent = data.api_quota.remaining || '---';
+                }
+            } catch (error) {
+                console.error('Failed to load status:', error);
+            }
+        }
+
+        function updateLastUpdate(timestamp) {
+            if (timestamp) {
+                const date = new Date(timestamp);
+                document.getElementById('lastUpdate').textContent = date.toLocaleString();
+            }
+        }
+
+        function formatTime(isoString) {
+            const date = new Date(isoString);
+            const now = new Date();
+            const diff = date - now;
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(hours / 24);
+
+            if (days > 0) return `in ${days}d ${hours % 24}h`;
+            if (hours > 0) return `in ${hours}h`;
+            return 'Soon';
+        }
+
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.textContent = message;
+            errorMsg.style.display = 'block';
+        }
+
+        // Initialize
+        loadStatus();
+        loadMatches();
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadMatches, 30000);
+        setInterval(loadStatus, 60000);
+    </script>
+</body>
+</html>
