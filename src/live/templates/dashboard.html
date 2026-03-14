@@ -297,7 +297,7 @@
         </div>
 
         <div class="section">
-            <div class="section-title">Live Opportunities</div>
+            <div class="section-title">Upcoming Matches - Detailed View</div>
             <div class="last-update">Last updated: <span id="lastUpdate">Never</span></div>
 
             <div id="matchesContainer"></div>
@@ -366,87 +366,114 @@
             const container = document.getElementById('matchesContainer');
             const emptyState = document.getElementById('emptyState');
 
-            if (!currentData.predictions || currentData.predictions.length === 0) {
+            if (!currentData.matches || currentData.matches.length === 0) {
                 container.innerHTML = '';
                 emptyState.style.display = 'block';
                 return;
             }
 
             emptyState.style.display = 'none';
-            container.innerHTML = currentData.predictions.map(pred => createMatchCard(pred)).join('');
+            container.innerHTML = currentData.matches.map(match => createMatchCard(match)).join('');
         }
 
-        function createMatchCard(analysis) {
-            const arb = analysis.arbitrage;
-            const rec = analysis.recommendation;
-            const odds = analysis.current_odds;
-            const timing = analysis.timing_predictions;
+        function createMatchCard(match) {
+            const odds = match.best_odds;
+            const arb = match.arbitrage || {};
+            const hasArb = arb.has_arbitrage || false;
 
-            const arbBadge = arb.exists
-                ? `<span class="badge success">✓ ARB ${arb.profit_pct.toFixed(2)}%</span>`
-                : `<span class="badge danger">✗ No ARB</span>`;
+            // Determine decision and reason
+            let decision, reason, decisionClass;
+            if (hasArb) {
+                decision = "✓ ARBITRAGE OPPORTUNITY";
+                reason = `Guaranteed ${arb.profit_pct?.toFixed(3) || '0.000'}% profit possible by betting on all three outcomes`;
+                decisionClass = "success";
+            } else {
+                decision = "✗ NO BET";
+                const totalProb = (1/odds.home + 1/odds.draw + 1/odds.away);
+                const overround = ((totalProb - 1) * 100).toFixed(2);
+                reason = `No arbitrage opportunity. Market overround: ${overround}% (bookmaker edge). Combined inverse odds: ${totalProb.toFixed(4)} (needs <1.0 for arbitrage)`;
+                decisionClass = "danger";
+            }
 
-            const actionBadge = rec.action === 'BET_NOW'
-                ? `<span class="badge success">BET NOW</span>`
-                : rec.action === 'PREPARE'
-                ? `<span class="badge warning">PREPARE</span>`
-                : `<span class="badge info">WAIT</span>`;
+            // Get best bookmaker for each outcome
+            const bestBookies = {
+                home: match.bookmakers?.find(b => b.h2h_odds?.home === odds.home)?.name || 'Unknown',
+                draw: match.bookmakers?.find(b => b.h2h_odds?.draw === odds.draw)?.name || 'Unknown',
+                away: match.bookmakers?.find(b => b.h2h_odds?.away === odds.away)?.name || 'Unknown'
+            };
 
-            const timingHTML = Object.entries(timing).map(([outcome, pred]) => `
-                <div class="prediction-box ${pred.should_bet_now ? 'active' : ''}">
-                    <div class="odds-label">${outcome.toUpperCase()}</div>
-                    <div style="font-size: 1.1rem; color: ${pred.should_bet_now ? '#10b981' : '#94a3b8'}">
-                        ${pred.should_bet_now ? '✓' : '✗'} ${(pred.probability * 100).toFixed(1)}%
-                    </div>
-                    <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">
-                        T: ${(pred.threshold * 100).toFixed(1)}%
-                    </div>
-                </div>
-            `).join('');
+            const matchTime = new Date(match.commence_time);
+            const now = new Date();
+            const hoursUntil = ((matchTime - now) / (1000 * 60 * 60)).toFixed(1);
 
             return `
                 <div class="match-card">
                     <div class="match-header">
-                        <div class="match-teams">${analysis.home_team} vs ${analysis.away_team}</div>
-                        <div class="match-time">${formatTime(analysis.commence_time)}</div>
-                    </div>
-
-                    <div>${arbBadge}${actionBadge}</div>
-
-                    <div class="odds-grid">
-                        <div class="odds-box">
-                            <div class="odds-label">HOME</div>
-                            <div class="odds-value">${odds.home.toFixed(2)}</div>
-                        </div>
-                        <div class="odds-box">
-                            <div class="odds-label">DRAW</div>
-                            <div class="odds-value">${odds.draw.toFixed(2)}</div>
-                        </div>
-                        <div class="odds-box">
-                            <div class="odds-label">AWAY</div>
-                            <div class="odds-value">${odds.away.toFixed(2)}</div>
+                        <div class="match-teams">${match.home_team} vs ${match.away_team}</div>
+                        <div class="match-time">
+                            ${formatTime(match.commence_time)}<br>
+                            <span style="font-size: 0.75rem; color: #64748b;">(in ${hoursUntil}h)</span>
                         </div>
                     </div>
 
-                    <div style="margin-top: 15px; color: #94a3b8; font-size: 0.875rem;">
-                        <strong>ML Timing Signals:</strong>
+                    <div style="margin-bottom: 15px;">
+                        <span class="badge ${decisionClass}">${decision}</span>
                     </div>
-                    <div class="prediction-grid">${timingHTML}</div>
 
-                    <div class="recommendation ${rec.action === 'BET_NOW' ? 'bet-now' : ''}">
-                        <strong style="color: #fff;">${rec.action.replace('_', ' ')}</strong>
+                    <div style="background: #0a0f1e; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                        <div style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 10px;"><strong>Best Odds Available:</strong></div>
+                        <div class="odds-grid">
+                            <div class="odds-box">
+                                <div class="odds-label">HOME</div>
+                                <div class="odds-value">${odds.home.toFixed(2)}</div>
+                                <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">${bestBookies.home}</div>
+                            </div>
+                            <div class="odds-box">
+                                <div class="odds-label">DRAW</div>
+                                <div class="odds-value">${odds.draw.toFixed(2)}</div>
+                                <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">${bestBookies.draw}</div>
+                            </div>
+                            <div class="odds-box">
+                                <div class="odds-label">AWAY</div>
+                                <div class="odds-value">${odds.away.toFixed(2)}</div>
+                                <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">${bestBookies.away}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    ${hasArb ? `
+                    <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                        <div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">💰 Arbitrage Stakes (for £100 total):</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.875rem;">
+                            <div>Home: £${arb.stakes?.home?.toFixed(2) || '0.00'}</div>
+                            <div>Draw: £${arb.stakes?.draw?.toFixed(2) || '0.00'}</div>
+                            <div>Away: £${arb.stakes?.away?.toFixed(2) || '0.00'}</div>
+                        </div>
+                        <div style="margin-top: 8px; color: #6ee7b7;">Guaranteed return: £${arb.guaranteed_return?.toFixed(2) || '0.00'}</div>
+                    </div>
+                    ` : ''}
+
+                    <div class="recommendation ${hasArb ? 'bet-now' : ''}">
+                        <strong style="color: #fff;">DECISION: ${hasArb ? 'PLACE BET NOW' : 'DO NOT BET'}</strong>
                         <div style="margin-top: 8px; font-size: 0.875rem; color: #cbd5e1;">
-                            ${rec.reason}
+                            <strong>Reason:</strong> ${reason}
                         </div>
+                    </div>
+
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155; font-size: 0.75rem; color: #64748b;">
+                        <div><strong>ML Timing Signals:</strong> Not available (model loading issue)</div>
+                        <div style="margin-top: 4px;">Currently showing arbitrage-based decisions only</div>
                     </div>
                 </div>
             `;
         }
 
         function updateStats() {
-            const opportunities = currentData.predictions?.filter(p => p.arbitrage.exists).length || 0;
+            const matches = currentData.matches || [];
+            const opportunities = matches.filter(m => m.arbitrage?.has_arbitrage).length;
+            const arbMatches = matches.filter(m => m.arbitrage?.has_arbitrage);
             const avgProfit = opportunities > 0
-                ? currentData.predictions.reduce((sum, p) => sum + p.arbitrage.profit_pct, 0) / currentData.predictions.length
+                ? arbMatches.reduce((sum, m) => sum + (m.arbitrage?.profit_pct || 0), 0) / opportunities
                 : 0;
 
             document.getElementById('opportunitiesCount').textContent = opportunities;
