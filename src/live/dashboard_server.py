@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path='../../.env')
 
 from odds_fetcher import OddsFetcher
-from live_predictor import LivePredictor
+from live_predictor_fixed import LivePredictor
 
 
 app = Flask(__name__,
@@ -126,9 +126,16 @@ def fetch_odds():
                     except Exception as e:
                         print(f"Error analyzing match: {e}")
 
+                # Save tracking state after predictions
+                try:
+                    predictor.save_tracking_state()
+                except Exception as e:
+                    print(f"Error saving tracking state: {e}")
+
             return jsonify({
                 'success': True,
                 'matches_count': len(matches),
+                'predictions_count': len(predictions),
                 'last_update': last_update
             })
         else:
@@ -265,6 +272,12 @@ def auto_fetch_loop():
                                 predictions.append(analysis)
                             except Exception as e:
                                 print(f"Error analyzing match: {e}")
+
+                        # Save tracking state
+                        try:
+                            predictor.save_tracking_state()
+                        except Exception as e:
+                            print(f"Error saving tracking state: {e}")
 
             except Exception as e:
                 print(f"Error in auto-fetch: {e}")

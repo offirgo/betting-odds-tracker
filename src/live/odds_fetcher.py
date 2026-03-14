@@ -141,6 +141,9 @@ class OddsFetcher:
             # Calculate best odds across all bookmakers
             match_data['best_odds'] = self.get_best_odds(match_data['bookmakers'])
 
+            # Check for arbitrage opportunity
+            match_data['arbitrage'] = self.check_arbitrage_opportunity(match_data)
+
             matches.append(match_data)
 
         return matches
@@ -205,15 +208,26 @@ class OddsFetcher:
 
         if has_arbitrage:
             # Calculate guaranteed profit percentage
-            stake = 100
-            guaranteed_return = stake / combined_inverse
-            profit = guaranteed_return - stake
-            profit_pct = (profit / stake) * 100
+            total_stake = 100
+            guaranteed_return = total_stake / combined_inverse
+            profit = guaranteed_return - total_stake
+            profit_pct = (profit / total_stake) * 100
+
+            # Calculate optimal stakes for each outcome
+            stake_home = (total_stake / combined_inverse) / best['home']
+            stake_draw = (total_stake / combined_inverse) / best['draw']
+            stake_away = (total_stake / combined_inverse) / best['away']
 
             return {
                 'has_arbitrage': True,
                 'profit_pct': profit_pct,
-                'combined_inverse': combined_inverse
+                'combined_inverse': combined_inverse,
+                'guaranteed_return': guaranteed_return,
+                'stakes': {
+                    'home': stake_home,
+                    'draw': stake_draw,
+                    'away': stake_away
+                }
             }
         else:
             return {
