@@ -196,6 +196,11 @@
             color: white;
         }
 
+        .badge.muted {
+            background: #475569;
+            color: #cbd5e1;
+        }
+
         .prediction-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -439,17 +444,50 @@
             }
 
             emptyState.style.display = 'none';
-            container.innerHTML = currentData.matches.map((match, index) => createMatchCard(match, index)).join('');
+
+            // Merge predictions with matches by match_id
+            const predictionsMap = {};
+            (currentData.predictions || []).forEach(pred => {
+                predictionsMap[pred.match_id] = pred;
+            });
+
+            container.innerHTML = currentData.matches.map((match, index) => {
+                const prediction = predictionsMap[match.match_id];
+                return createMatchCard(match, prediction, index);
+            }).join('');
         }
 
-        function createMatchCard(match, index) {
+        function createMatchCard(match, prediction, index) {
             const odds = match.best_odds;
             const arb = match.arbitrage || {};
             const hasArb = arb.has_arbitrage || false;
 
-            // Determine decision and reason
+            // Use ML recommendation if available, otherwise fall back to arbitrage
+            const recommendation = prediction?.recommendation;
             let decision, reason, decisionClass;
-            if (hasArb) {
+
+            if (recommendation) {
+                // ML-driven decision
+                const action = recommendation.action;
+                if (action === 'BET_ALL_THREE') {
+                    decision = "⚡ BET NOW";
+                    reason = recommendation.reason;
+                    decisionClass = "success";
+                } else if (action === 'BET_TWO_AND_WAIT') {
+                    decision = "⏳ PREPARE";
+                    reason = recommendation.reason;
+                    decisionClass = "warning";
+                } else if (action === 'TRACKING') {
+                    decision = "📊 TRACKING";
+                    reason = recommendation.reason + ' (' + recommendation.next_steps + ')';
+                    decisionClass = "info";
+                } else {
+                    decision = "⏸ WAIT";
+                    reason = recommendation.reason;
+                    decisionClass = "muted";
+                }
+            } else if (hasArb) {
+                // Fallback to simple arbitrage detection
                 decision = "✓ ARBITRAGE";
                 reason = `Guaranteed ${arb.profit_pct?.toFixed(3) || '0.000'}% profit possible by betting on all three outcomes`;
                 decisionClass = "success";
@@ -461,11 +499,11 @@
                 decisionClass = "danger";
             }
 
-            // Get best bookmaker for each outcome
+            // Get best bookmaker names (already stored in best_odds)
             const bestBookies = {
-                home: match.bookmakers?.find(b => b.h2h_odds?.home === odds.home)?.name || 'Unknown',
-                draw: match.bookmakers?.find(b => b.h2h_odds?.draw === odds.draw)?.name || 'Unknown',
-                away: match.bookmakers?.find(b => b.h2h_odds?.away === odds.away)?.name || 'Unknown'
+                home: odds.home_bookmaker || 'Unknown',
+                draw: odds.draw_bookmaker || 'Unknown',
+                away: odds.away_bookmaker || 'Unknown'
             };
 
             const matchTime = new Date(match.commence_time);
@@ -538,9 +576,40 @@
                                 </div>
                             </div>
 
-                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155; font-size: 0.75rem; color: #64748b;">
-                                <div><strong>ML Timing Signals:</strong> Not available (model loading issue)</div>
-                                <div style="margin-top: 4px;">Currently showing arbitrage-based decisions only</div>
+                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                                ${prediction && prediction.timing_predictions ? `
+                                    <div style="font-size: 0.875rem; margin-bottom: 10px;"><strong>ML Timing Predictions:</strong></div>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.8rem;">
+                                        <div style="background: ${prediction.timing_predictions.home.should_bet_now ? '#10b98120' : '#1e293b'}; padding: 8px; border-radius: 4px; border: 1px solid ${prediction.timing_predictions.home.should_bet_now ? '#10b981' : '#334155'};">
+                                            <div style="color: #94a3b8; font-size: 0.7rem;">HOME</div>
+                                            <div style="font-weight: 600; color: ${prediction.timing_predictions.home.should_bet_now ? '#10b981' : '#e2e8f0'};">${(prediction.timing_predictions.home.probability * 100).toFixed(1)}%</div>
+                                            <div style="font-size: 0.65rem; color: #64748b;">threshold: ${(prediction.timing_predictions.home.threshold * 100).toFixed(1)}%</div>
+                                        </div>
+                                        <div style="background: ${prediction.timing_predictions.draw.should_bet_now ? '#10b98120' : '#1e293b'}; padding: 8px; border-radius: 4px; border: 1px solid ${prediction.timing_predictions.draw.should_bet_now ? '#10b981' : '#334155'};">
+                                            <div style="color: #94a3b8; font-size: 0.7rem;">DRAW</div>
+                                            <div style="font-weight: 600; color: ${prediction.timing_predictions.draw.should_bet_now ? '#10b981' : '#e2e8f0'};">${(prediction.timing_predictions.draw.probability * 100).toFixed(1)}%</div>
+                                            <div style="font-size: 0.65rem; color: #64748b;">threshold: ${(prediction.timing_predictions.draw.threshold * 100).toFixed(1)}%</div>
+                                        </div>
+                                        <div style="background: ${prediction.timing_predictions.away.should_bet_now ? '#10b98120' : '#1e293b'}; padding: 8px; border-radius: 4px; border: 1px solid ${prediction.timing_predictions.away.should_bet_now ? '#10b981' : '#334155'};">
+                                            <div style="color: #94a3b8; font-size: 0.7rem;">AWAY</div>
+                                            <div style="font-weight: 600; color: ${prediction.timing_predictions.away.should_bet_now ? '#10b981' : '#e2e8f0'};">${(prediction.timing_predictions.away.probability * 100).toFixed(1)}%</div>
+                                            <div style="font-size: 0.65rem; color: #64748b;">threshold: ${(prediction.timing_predictions.away.threshold * 100).toFixed(1)}%</div>
+                                        </div>
+                                    </div>
+                                ` : `
+                                    <div style="font-size: 0.75rem; color: #64748b;">
+                                        <strong>ML Timing Signals:</strong> Building history (${prediction?.snapshots_count || 0} snapshots, need 2+)
+                                    </div>
+                                `}
+                                ${prediction && recommendation && recommendation.strategy ? `
+                                    <div style="margin-top: 12px; padding: 10px; background: #0a0f1e; border-radius: 4px; font-size: 0.75rem;">
+                                        <div style="color: #94a3b8; margin-bottom: 6px;"><strong>Betting Strategy:</strong></div>
+                                        ${Object.entries(recommendation.strategy).map(([key, value]) =>
+                                            `<div style="margin: 4px 0; color: #cbd5e1;">${value}</div>`
+                                        ).join('')}
+                                        ${recommendation.monitoring ? `<div style="margin-top: 8px; color: #f59e0b; font-size: 0.7rem;">⚠ ${recommendation.monitoring}</div>` : ''}
+                                    </div>
+                                ` : ''}
                             </div>
                         </div>
                     </div>
