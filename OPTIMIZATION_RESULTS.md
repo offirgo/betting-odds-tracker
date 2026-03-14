@@ -305,6 +305,62 @@ Strategy:
 
 ## Optimization #7: Transaction Cost Awareness
 
-**Status**: Pending
+**Concept**: Account for real-world betting exchange commissions (2% typical).
 
-**Expected Impact**: +2-3% profit
+Strategy:
+- Apply 2% commission on winnings
+- Skip bets where net profit ≤ 0 after commission
+- Focus only on profitable opportunities
+
+**Test Season**: 24/25 (hold-out validation)
+**Base Bet**: £100
+**Commission Rate**: 2.0%
+
+### Results
+
+#### Threshold 0.55 (Original)
+| Metric | No Commission | With 2% Commission | Change |
+|--------|---------------|-------------------|--------|
+| Profit | £584.62 | £315.39 | **-£269.23 (-46.0%)** |
+| ROI | 5.85% | 3.15% | -2.70% |
+| Completed Bets | 160 | 102 | -58 (-36.2%) |
+| Skipped Unprofitable | 0 | 58 | +58 |
+| Avg Net Profit/Bet | £3.65 | £3.09 | -15.3% |
+
+#### Threshold 0.50
+| Metric | No Commission | With 2% Commission | Change |
+|--------|---------------|-------------------|--------|
+| Profit | £197.53 | £78.69 | **-£118.84 (-60.2%)** |
+| ROI | 1.98% | 0.79% | -1.19% |
+| Completed Bets | 86 | 36 | -50 (-58.1%) |
+| Skipped Unprofitable | 0 | 50 | +50 |
+| Avg Net Profit/Bet | £2.30 | £2.19 | -4.8% |
+
+### Overall Conclusion
+
+**Important Reality Check** ⚠️
+
+- Threshold 0.55: -46% profit after commission
+- Threshold 0.50: -60% profit after commission
+- Filters out 36-58% of opportunities as unprofitable
+- Commission severely impacts low-margin arbitrages
+
+**Why commissions hurt**:
+- Arbitrage profits are typically 2-4%
+- 2% commission on winnings consumes most of the edge
+- Many opportunities become unprofitable
+- Need higher-profit arbitrages to overcome costs
+
+**This is not an optimization** - it's a **reality simulation**:
+- Doesn't improve results - shows real-world constraints
+- Critical for realistic profit expectations
+- Demonstrates importance of finding higher-profit opportunities
+- Or using zero-commission platforms when possible
+
+**Recommendation**:
+- ⚠️ **Use for realistic forecasting** - not deployment
+- Real profit expectations: ~50-60% lower with commissions
+- Consider platforms with lower/zero commission
+- Focus on strategies that find higher-profit arbitrages
+
+**Implementation**: `src/simulator/transaction_cost_sim.py`
