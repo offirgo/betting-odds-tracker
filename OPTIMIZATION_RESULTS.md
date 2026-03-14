@@ -121,9 +121,60 @@ Filters applied:
 
 ## Optimization #3: Early Exit Strategy
 
-**Status**: Pending
+**Concept**: Exit arbitrage early when odds improve favorably, rather than always waiting for timing signal.
 
-**Expected Impact**: +3-5% profit
+Strategy:
+- Monitor third outcome odds continuously
+- Exit early if odds create arbitrage opportunity ≥ 1.0% profit
+- Otherwise wait for timing signal or fallback to last snapshot
+
+**Test Season**: 24/25 (hold-out validation)
+**Base Bet**: £100
+**Min Profit for Early Exit**: 1.0%
+
+### Results
+
+#### Threshold 0.55 (Original)
+| Metric | Baseline | Early Exit | Change |
+|--------|----------|------------|--------|
+| Profit | £584.62 | £265.86 | **-£318.76 (-54.5%)** |
+| ROI | 5.85% | 2.66% | -3.19% |
+| Completed Bets | 160 | 160 | 0 |
+| Early Exits | N/A | 129 (80.6%) | - |
+| Timing Signals | 122 | - | - |
+| Avg Profit/Bet | £3.65 | £1.66 | -54.5% |
+
+#### Threshold 0.50
+| Metric | Baseline | Early Exit | Change |
+|--------|----------|------------|--------|
+| Profit | £197.53 | £151.05 | **-£46.48 (-23.5%)** |
+| ROI | 1.98% | 1.51% | -0.47% |
+| Completed Bets | 86 | 93 | +7 |
+| Early Exits | N/A | 76 (81.7%) | - |
+| Timing Signals | 86 | - | - |
+| Avg Profit/Bet | £2.30 | £1.62 | -29.6% |
+
+### Overall Conclusion
+
+**Failed Optimization**:
+- Threshold 0.55: -54.5% profit (£584.62 → £265.86)
+- Threshold 0.50: -23.5% profit (£197.53 → £151.05)
+- 80%+ of bets exit early with minimal profit
+- Average profit per bet drops significantly
+
+**Why it failed**:
+- 1.0% minimum profit threshold is too low
+- Exits prematurely before odds fully improve
+- Timing models already capture optimal entry points
+- "Greed is good" - waiting for better odds pays off
+- Early exit sacrifices potential profit for certainty
+
+**Recommendation**: ❌ **Do NOT use early exit strategy**
+- Timing models are better at predicting optimal bet timing
+- Patience yields higher profits than premature exits
+- If odds improve early, they often improve more later
+
+**Implementation**: `src/simulator/early_exit_sim.py` (for reference only)
 
 ---
 
