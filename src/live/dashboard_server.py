@@ -19,6 +19,10 @@ import os
 from datetime import datetime, timezone
 import threading
 import time
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv(dotenv_path='../../.env')
 
 from odds_fetcher import OddsFetcher
 from live_predictor import LivePredictor
