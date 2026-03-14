@@ -1,0 +1,3225 @@
+{
+  "season": "24/25",
+  "threshold_version": "original",
+  "threshold_value": 0.55,
+  "initial_bankroll": 10000,
+  "final_bankroll": 10562.635188115855,
+  "total_profit": 562.6351881158556,
+  "roi": 5.626351881158553,
+  "total_matches": 386,
+  "skipped_no_future_arb": 5,
+  "skipped_no_odds": 0,
+  "arbitrages_completed": 160,
+  "signals_fired": 122,
+  "no_signals": 38,
+  "signal_coverage": 76.25,
+  "avg_days_before": 3.3731474247685185,
+  "avg_multiplier": 0.9962500000000001,
+  "coverage": 41.45077720207254,
+  "avg_profit": 3.5164699257240977,
+  "avg_profit_pct": 3.653853692366829,
+  "bets": [
+    {
+      "match_id": "010dcbb6618734c3e744df9b6f493012",
+      "home_team": "Crystal Palace",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 0.2947106481481481,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.9286726499763773,
+      "profit_pct": 3.660840812470471,
+      "signal_fired": false
+    },
+    {
+      "match_id": "0479f8bbd3d8ffdfb3cd0616b7c7b74a",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "away",
+      "days_before": 2.0446875,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 4.002935486023091,
+      "profit_pct": 4.002935486023091,
+      "signal_fired": true
+    },
+    {
+      "match_id": "055f48ea54ea77ffa2b16ef7310b04b6",
+      "home_team": "Arsenal",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 0.5238657407407408,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 0.2755453501722087,
+      "profit_pct": 0.3444316877152609,
+      "signal_fired": false
+    },
+    {
+      "match_id": "062245c05bf9c12e0efdf2fb5a229313",
+      "home_team": "Leicester City",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 0.2530324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.116016245806108,
+      "profit_pct": 1.395020307257635,
+      "signal_fired": false
+    },
+    {
+      "match_id": "06f8653d324984854157f29d5702bd87",
+      "home_team": "Crystal Palace",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 1.0863541666666667,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.0984358706986512,
+      "profit_pct": 2.3315954118873905,
+      "signal_fired": true
+    },
+    {
+      "match_id": "0bf0455a425391f969ab8b65ea09e96a",
+      "home_team": "Ipswich Town",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "away",
+      "days_before": 7.961354166666666,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 5.6038197274950505,
+      "profit_pct": 4.669849772912542,
+      "signal_fired": true
+    },
+    {
+      "match_id": "0c766818d41310b014e4fb977ee7b93a",
+      "home_team": "Liverpool",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 0.2530208333333333,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.127203662218747,
+      "profit_pct": 2.659004577773434,
+      "signal_fired": false
+    },
+    {
+      "match_id": "0e7c9c96cdb69a3f7c4c03d756878c76",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 16.148865740740742,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 8.518943742824348,
+      "profit_pct": 6.084959816303106,
+      "signal_fired": true
+    },
+    {
+      "match_id": "10aa20648dcd13d0d8a3fa0afc3101cb",
+      "home_team": "Southampton",
+      "away_team": "Brentford",
+      "bet3_outcome": "away",
+      "days_before": 7.6696990740740745,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 2.857929515418519,
+      "profit_pct": 2.3816079295154324,
+      "signal_fired": true
+    },
+    {
+      "match_id": "10e72cb766db3b7fd7cc3f5eb28e868f",
+      "home_team": "Brentford",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 6.0655324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 4.373576309795013,
+      "profit_pct": 3.644646924829177,
+      "signal_fired": true
+    },
+    {
+      "match_id": "1473946c5af9e0aafa535d3e48dea6a0",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Manchester United",
+      "bet3_outcome": "away",
+      "days_before": 3.0655324074074075,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 3.4785584603159094,
+      "profit_pct": 3.4785584603159094,
+      "signal_fired": true
+    },
+    {
+      "match_id": "1836921f2a8496c1c1913bdf14bb0432",
+      "home_team": "Aston Villa",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 6.0238657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 3.712771084337348,
+      "profit_pct": 3.0939759036144565,
+      "signal_fired": true
+    },
+    {
+      "match_id": "1c6de5c616c96b8734bd8f0acfda8c97",
+      "home_team": "Fulham",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 0.2530208333333333,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 4.163591635916362,
+      "profit_pct": 5.204489544895452,
+      "signal_fired": false
+    },
+    {
+      "match_id": "1ca269916523e4a3737bbafe01792043",
+      "home_team": "Manchester United",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 7.1905324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 1.641586867305051,
+      "profit_pct": 1.3679890560875425,
+      "signal_fired": true
+    },
+    {
+      "match_id": "1ccb012b593a7b3ef8390cc30674add9",
+      "home_team": "Ipswich Town",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "away",
+      "days_before": 0.3155324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 0.4054054054054035,
+      "profit_pct": 0.5067567567567544,
+      "signal_fired": false
+    },
+    {
+      "match_id": "1cd55044aba32d7902c1cf3ed4da210f",
+      "home_team": "West Ham United",
+      "away_team": "Southampton",
+      "bet3_outcome": "home",
+      "days_before": 11.628032407407407,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 3.217759648572354,
+      "profit_pct": 2.298399748980253,
+      "signal_fired": true
+    },
+    {
+      "match_id": "1ded735e9bdcd609e5bd48cb1ba05c8e",
+      "home_team": "Everton",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 0.2530324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.560747021868238,
+      "profit_pct": 3.200933777335298,
+      "signal_fired": false
+    },
+    {
+      "match_id": "1ee2fa57e3e5993877afb667347a7d85",
+      "home_team": "Nottingham Forest",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 10.02386574074074,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 3.133424013849435,
+      "profit_pct": 2.2381600098924537,
+      "signal_fired": true
+    },
+    {
+      "match_id": "1f4cc94a47d13f4550a58e963b296998",
+      "home_team": "Everton",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 0.8155208333333334,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.742075291034624,
+      "profit_pct": 6.380083656705137,
+      "signal_fired": true
+    },
+    {
+      "match_id": "26f001bc7f494e5ea72b7010ff19587d",
+      "home_team": "Leicester City",
+      "away_team": "Manchester United",
+      "bet3_outcome": "away",
+      "days_before": 0.2947106481481481,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.4737991266375445,
+      "profit_pct": 1.6375545851528273,
+      "signal_fired": true
+    },
+    {
+      "match_id": "274740e90bb66c52aead4b6fb8a572d9",
+      "home_team": "Manchester United",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "home",
+      "days_before": 3.8780324074074075,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 6.104651162790702,
+      "profit_pct": 6.104651162790702,
+      "signal_fired": true
+    },
+    {
+      "match_id": "289642780c979c8b4b16d5a02edc5b5d",
+      "home_team": "Chelsea",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 7.253020833333333,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 0.2504512635379115,
+      "profit_pct": 0.20870938628159288,
+      "signal_fired": true
+    },
+    {
+      "match_id": "2aeab34fac59a938de424f0a33c06516",
+      "home_team": "Manchester United",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 0.21136574074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 12.354290959155577,
+      "profit_pct": 15.44286369894447,
+      "signal_fired": false
+    },
+    {
+      "match_id": "2c13d2c658170f1809caf0bc268382ad",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 0.21136574074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 6.9549549549549425,
+      "profit_pct": 8.693693693693678,
+      "signal_fired": false
+    },
+    {
+      "match_id": "2c2dbd0a6bd84bab7a8e9b53c97bfeba",
+      "home_team": "Chelsea",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 1.7321875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.8193356737780277,
+      "profit_pct": 3.132595193086697,
+      "signal_fired": true
+    },
+    {
+      "match_id": "2c52ed3d5da4dd7793592371aba065a8",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 8.50070783932047,
+      "profit_pct": 9.4452309325783,
+      "signal_fired": true
+    },
+    {
+      "match_id": "2d47b0131e8839849d30741559257fdc",
+      "home_team": "Bournemouth",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 7.1280324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 1.105326391670019,
+      "profit_pct": 0.9211053263916824,
+      "signal_fired": true
+    },
+    {
+      "match_id": "2edf9441d093a5f0d4ecbc60cc54f8ae",
+      "home_team": "Chelsea",
+      "away_team": "Leicester City",
+      "bet3_outcome": "home",
+      "days_before": 13.628032407407407,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 1.4885282596530374,
+      "profit_pct": 1.063234471180741,
+      "signal_fired": true
+    },
+    {
+      "match_id": "312fa59ad0e698a9e3ce8b2c0a3a9d98",
+      "home_team": "West Ham United",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 0.3155324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.173913043478251,
+      "profit_pct": 2.7173913043478137,
+      "signal_fired": false
+    },
+    {
+      "match_id": "32100882c6cfac441bf407e92126be1e",
+      "home_team": "Nottingham Forest",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "away",
+      "days_before": 3.6697106481481483,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 7.142857142857125,
+      "profit_pct": 7.142857142857125,
+      "signal_fired": true
+    },
+    {
+      "match_id": "323540f8828a57d7760b54d6729be820",
+      "home_team": "Southampton",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 4.0863657407407405,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 1.0204081632653015,
+      "profit_pct": 1.0204081632653015,
+      "signal_fired": true
+    },
+    {
+      "match_id": "3281d26485c4d33951cad339a09a59f0",
+      "home_team": "Fulham",
+      "away_team": "West Ham United",
+      "bet3_outcome": "away",
+      "days_before": 0.2530208333333333,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.0224719101123583,
+      "profit_pct": 2.2471910112359534,
+      "signal_fired": true
+    },
+    {
+      "match_id": "33142ff20c5aea95762ce4319d08b6aa",
+      "home_team": "Bournemouth",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 5.1280324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 1.3930321175830187,
+      "profit_pct": 1.160860097985849,
+      "signal_fired": true
+    },
+    {
+      "match_id": "34d18475af0092cf26ea5b79931b0b76",
+      "home_team": "Crystal Palace",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 0.2946875,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 4.908733795993186,
+      "profit_pct": 6.135917244991482,
+      "signal_fired": false
+    },
+    {
+      "match_id": "354bcf176cb1cbc967a314db75edde43",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 0.7738657407407408,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.17077798861480176,
+      "profit_pct": 0.18975332068311307,
+      "signal_fired": true
+    },
+    {
+      "match_id": "363f4e5a71061850a45cba21170b88d2",
+      "home_team": "Arsenal",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "home",
+      "days_before": 3.1488657407407405,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 5.439330543933053,
+      "profit_pct": 5.439330543933053,
+      "signal_fired": true
+    },
+    {
+      "match_id": "36808dc52374b40df08cab6b1d5664d1",
+      "home_team": "Leicester City",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "away",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.412118780096307,
+      "profit_pct": 1.5690208667736745,
+      "signal_fired": true
+    },
+    {
+      "match_id": "36c348ee3ab335d09cabd3a112caaa4a",
+      "home_team": "Newcastle United",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "home",
+      "days_before": 5.8571875,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 7.094492167761501,
+      "profit_pct": 5.912076806467917,
+      "signal_fired": true
+    },
+    {
+      "match_id": "36fbbbe15f299601484b7a7e808868fb",
+      "home_team": "Ipswich Town",
+      "away_team": "Manchester United",
+      "bet3_outcome": "away",
+      "days_before": 20.357199074074074,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 1.3369713506139078,
+      "profit_pct": 0.9549795361527913,
+      "signal_fired": true
+    },
+    {
+      "match_id": "3a65b350186d7d31b94a79490e77712b",
+      "home_team": "West Ham United",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 0.2530324074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 11.25,
+      "profit_pct": 12.5,
+      "signal_fired": true
+    },
+    {
+      "match_id": "3ab4f45c9202a4f022129063909525db",
+      "home_team": "Aston Villa",
+      "away_team": "Manchester United",
+      "bet3_outcome": "home",
+      "days_before": 12.878032407407407,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 4.192141214662541,
+      "profit_pct": 2.994386581901815,
+      "signal_fired": true
+    },
+    {
+      "match_id": "3b8c691ca0031dabac80247ab5b36f21",
+      "home_team": "Bournemouth",
+      "away_team": "Manchester United",
+      "bet3_outcome": "home",
+      "days_before": 13.586377314814815,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 0.14155712841255763,
+      "profit_pct": 0.10111223458039831,
+      "signal_fired": true
+    },
+    {
+      "match_id": "40867f2f44c7a2e1f810088225b6b1fb",
+      "home_team": "Aston Villa",
+      "away_team": "Chelsea",
+      "bet3_outcome": "away",
+      "days_before": 1.232199074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.18487094757523437,
+      "profit_pct": 0.20541216397248263,
+      "signal_fired": true
+    },
+    {
+      "match_id": "42d364b23cebe611d8b2a4826d18c656",
+      "home_team": "Bournemouth",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 0.9613541666666666,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.024313105356782,
+      "profit_pct": 3.360347894840869,
+      "signal_fired": true
+    },
+    {
+      "match_id": "430740a63e09e655fface9d04bb96842",
+      "home_team": "Chelsea",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 6.5238657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 2.8274846449481146,
+      "profit_pct": 2.356237204123429,
+      "signal_fired": true
+    },
+    {
+      "match_id": "47b49e230866bc684d4253f18656a90a",
+      "home_team": "Newcastle United",
+      "away_team": "Brentford",
+      "bet3_outcome": "home",
+      "days_before": 1.1176041666666667,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.0650887573964525,
+      "profit_pct": 1.183431952662725,
+      "signal_fired": true
+    },
+    {
+      "match_id": "482bb4f8082a872f4c14eba42f0ed0b0",
+      "home_team": "Nottingham Forest",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "home",
+      "days_before": 0.3988657407407407,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.7426008968609779,
+      "profit_pct": 0.8251121076233088,
+      "signal_fired": true
+    },
+    {
+      "match_id": "496f55d9e7203f09286b799897ab88b8",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Leicester City",
+      "bet3_outcome": "home",
+      "days_before": 0.2530324074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.0795554255630435,
+      "profit_pct": 2.310617139514493,
+      "signal_fired": true
+    },
+    {
+      "match_id": "4b3a9dd04a516f725acd57a16c799fbd",
+      "home_team": "Manchester United",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 0.3988657407407407,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.1563981042654063,
+      "profit_pct": 3.5071090047393403,
+      "signal_fired": true
+    },
+    {
+      "match_id": "4b73f617ea2067c107069fecc1975944",
+      "home_team": "Arsenal",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 0.2946875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.0910303434478124,
+      "profit_pct": 3.434478159386458,
+      "signal_fired": true
+    },
+    {
+      "match_id": "4ba6bf27063989c6b42c20230d1a7207",
+      "home_team": "Arsenal",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "home",
+      "days_before": 0.2321875,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.1181367056186957,
+      "profit_pct": 2.6476708820233696,
+      "signal_fired": false
+    },
+    {
+      "match_id": "4caea89abebb6b3a875348ba5f086836",
+      "home_team": "Arsenal",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 1.7321875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 8.070907194994788,
+      "profit_pct": 8.96767466110532,
+      "signal_fired": true
+    },
+    {
+      "match_id": "4eeec3e2817061365a9675c31c874181",
+      "home_team": "Manchester City",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "home",
+      "days_before": 2.8363657407407405,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 0.36021290195400013,
+      "profit_pct": 0.36021290195400013,
+      "signal_fired": true
+    },
+    {
+      "match_id": "4f2defd5238799e38ff4de468eaac5c9",
+      "home_team": "Fulham",
+      "away_team": "Chelsea",
+      "bet3_outcome": "away",
+      "days_before": 1.044699074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 6.716832171714046,
+      "profit_pct": 7.4631468574600515,
+      "signal_fired": true
+    },
+    {
+      "match_id": "5223ed5b01b1b87fa24a2f7cf6464f58",
+      "home_team": "Fulham",
+      "away_team": "Liverpool",
+      "bet3_outcome": "away",
+      "days_before": 0.21136574074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.952182952182966,
+      "profit_pct": 3.690228690228707,
+      "signal_fired": false
+    },
+    {
+      "match_id": "552a1da675b6098a2f26c68b98ee4eca",
+      "home_team": "Newcastle United",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 5.1071875,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 2.210184182015169,
+      "profit_pct": 1.8418201516793076,
+      "signal_fired": true
+    },
+    {
+      "match_id": "557375d9d26d67451556ee732732c155",
+      "home_team": "Crystal Palace",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 5.3988657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 5.062751435546545,
+      "profit_pct": 4.218959529622121,
+      "signal_fired": true
+    },
+    {
+      "match_id": "57088f84741fcdb1b535d5d58bab1bb9",
+      "home_team": "Everton",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 5.1905324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 0.3151917122774819,
+      "profit_pct": 0.2626597602312349,
+      "signal_fired": true
+    },
+    {
+      "match_id": "59c8fb6d7e660c076e743ff6645626c8",
+      "home_team": "Brentford",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 3.857199074074074,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 0.615137737362943,
+      "profit_pct": 0.615137737362943,
+      "signal_fired": true
+    },
+    {
+      "match_id": "5ccdf1a9875c8417bf996e1a5494e604",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "away",
+      "days_before": 6.1280324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 0.24649459676699337,
+      "profit_pct": 0.20541216397249448,
+      "signal_fired": true
+    },
+    {
+      "match_id": "5e87d0e3412918b98c8d113071e8baeb",
+      "home_team": "Everton",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 1.0238541666666667,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.692933157957668,
+      "profit_pct": 6.325481286619632,
+      "signal_fired": true
+    },
+    {
+      "match_id": "5ea4d4399f71ce7c1aae2adfd5405bf6",
+      "home_team": "Manchester City",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 5.988098966489204,
+      "profit_pct": 7.485123708111504,
+      "signal_fired": false
+    },
+    {
+      "match_id": "628a3ac0571e90d13b3bdff50177f51c",
+      "home_team": "Bournemouth",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 6.2946990740740745,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 2.2012871523130286,
+      "profit_pct": 1.8344059602608573,
+      "signal_fired": true
+    },
+    {
+      "match_id": "6536bd90c0349e8fe6bb8baa37770d53",
+      "home_team": "Crystal Palace",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "away",
+      "days_before": 1.1488657407407408,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.408250355618776,
+      "profit_pct": 1.5647226173541955,
+      "signal_fired": true
+    },
+    {
+      "match_id": "65658b715795116945ee46f71b84ee12",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.691713347498535,
+      "profit_pct": 6.324125941665039,
+      "signal_fired": true
+    },
+    {
+      "match_id": "671b1eb02378506775855671c90214e9",
+      "home_team": "Brentford",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 7.548808515785652,
+      "profit_pct": 8.387565017539613,
+      "signal_fired": true
+    },
+    {
+      "match_id": "67f2a1bfcc3fe59328c79c3599490bfa",
+      "home_team": "Manchester City",
+      "away_team": "Manchester United",
+      "bet3_outcome": "home",
+      "days_before": 0.1905439814814815,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.17928712025991445,
+      "profit_pct": 0.19920791139990493,
+      "signal_fired": true
+    },
+    {
+      "match_id": "68bce59e24be5258b1b2df67a493a645",
+      "home_team": "Newcastle United",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 15.253020833333334,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 3.4248627059410808,
+      "profit_pct": 2.446330504243629,
+      "signal_fired": true
+    },
+    {
+      "match_id": "6bd15d47f27c0bcf9ff259e782586e52",
+      "home_team": "Fulham",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 0.2530208333333333,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 6.716832171714046,
+      "profit_pct": 7.4631468574600515,
+      "signal_fired": true
+    },
+    {
+      "match_id": "7065ea5e6e4ecef6b5845a117e42bc0e",
+      "home_team": "Nottingham Forest",
+      "away_team": "Chelsea",
+      "bet3_outcome": "away",
+      "days_before": 3.669699074074074,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 2.3866527008828484,
+      "profit_pct": 2.3866527008828484,
+      "signal_fired": true
+    },
+    {
+      "match_id": "718b09ffb0d6aa6665b4da80f86fba6f",
+      "home_team": "Nottingham Forest",
+      "away_team": "Manchester United",
+      "bet3_outcome": "home",
+      "days_before": 1.1280324074074075,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.5612941014332904,
+      "profit_pct": 1.734771223814767,
+      "signal_fired": true
+    },
+    {
+      "match_id": "73f73cde33b866f5e0c2fabf852efb36",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 1.0863657407407408,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.2200267734373682,
+      "profit_pct": 0.2444741927081869,
+      "signal_fired": true
+    },
+    {
+      "match_id": "740df065d06a1327468c040ec59ee9b1",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "West Ham United",
+      "bet3_outcome": "home",
+      "days_before": 1.1176157407407408,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.4186046511627808,
+      "profit_pct": 0.46511627906975644,
+      "signal_fired": true
+    },
+    {
+      "match_id": "748da8cde38c1cbc86c31664312f9c6e",
+      "home_team": "West Ham United",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 5.3363657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 6.785046728971963,
+      "profit_pct": 5.654205607476636,
+      "signal_fired": true
+    },
+    {
+      "match_id": "7506f292d90bbc314b68e4ca70e6e13b",
+      "home_team": "Manchester City",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 3.5655439814814813,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 3.2815198618307306,
+      "profit_pct": 3.2815198618307306,
+      "signal_fired": true
+    },
+    {
+      "match_id": "7526990eb8f281c4dfbdcca32545ded1",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 1.919699074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.0143540669856463,
+      "profit_pct": 3.349282296650718,
+      "signal_fired": true
+    },
+    {
+      "match_id": "7579d22151b7be3f590e9e338de9dff6",
+      "home_team": "Manchester United",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 1.1280324074074075,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.1691154676716025,
+      "profit_pct": 2.4101282974128915,
+      "signal_fired": true
+    },
+    {
+      "match_id": "773baa3365b285ffc1829b37d63df2f7",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Brentford",
+      "bet3_outcome": "home",
+      "days_before": 1.2530208333333333,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.988929889298902,
+      "profit_pct": 3.321033210332113,
+      "signal_fired": true
+    },
+    {
+      "match_id": "78012d25c524b145d002d02c26d105d5",
+      "home_team": "Ipswich Town",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "away",
+      "days_before": 12.294699074074074,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 0.014015416958699234,
+      "profit_pct": 0.010011012113356596,
+      "signal_fired": true
+    },
+    {
+      "match_id": "791c21aff5c0a362cc00c2082a8191f2",
+      "home_team": "Everton",
+      "away_team": "Manchester United",
+      "bet3_outcome": "away",
+      "days_before": 0.8571875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.8673158855751666,
+      "profit_pct": 4.2970176506390745,
+      "signal_fired": true
+    },
+    {
+      "match_id": "7a5d57e0f48232f9acb7f6e01b608c18",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "home",
+      "days_before": 0.1905324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 9.893850042122992,
+      "profit_pct": 12.36731255265374,
+      "signal_fired": false
+    },
+    {
+      "match_id": "7c270d4fe378b74dbe5516eb8b426855",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Liverpool",
+      "bet3_outcome": "away",
+      "days_before": 0.2947106481481481,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 7.018255578093303,
+      "profit_pct": 8.772819472616629,
+      "signal_fired": false
+    },
+    {
+      "match_id": "7c573f2b39c5122801b1a7e7d98e17c6",
+      "home_team": "Manchester City",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 0.2530324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.241565452091777,
+      "profit_pct": 1.5519568151147212,
+      "signal_fired": false
+    },
+    {
+      "match_id": "7e986ec99903b23f19f674606b60d233",
+      "home_team": "Crystal Palace",
+      "away_team": "Chelsea",
+      "bet3_outcome": "away",
+      "days_before": 1.1280439814814816,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.2081542466250994,
+      "profit_pct": 1.3423936073612217,
+      "signal_fired": true
+    },
+    {
+      "match_id": "81bc91dc843f0d5c10d5430e55084a30",
+      "home_team": "West Ham United",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 0.9613541666666666,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.4650965774313818,
+      "profit_pct": 0.5167739749237575,
+      "signal_fired": true
+    },
+    {
+      "match_id": "81d19435b8cda673ba238616ea1a1b9b",
+      "home_team": "Nottingham Forest",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 3.857199074074074,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 6.968345018058216,
+      "profit_pct": 6.968345018058216,
+      "signal_fired": true
+    },
+    {
+      "match_id": "8236c938130428f0fcdf7651f4112040",
+      "home_team": "Newcastle United",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 0.19052083333333333,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 4.920634920634939,
+      "profit_pct": 5.46737213403882,
+      "signal_fired": true
+    },
+    {
+      "match_id": "846ea0dcf3f8e6e3259bafdbd9de736c",
+      "home_team": "West Ham United",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "away",
+      "days_before": 7.0238657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 2.544789762340045,
+      "profit_pct": 2.120658135283371,
+      "signal_fired": true
+    },
+    {
+      "match_id": "84c30fe877ce402264ff72923e161d33",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Brentford",
+      "bet3_outcome": "away",
+      "days_before": 3.669699074074074,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 2.9417690912754324,
+      "profit_pct": 2.9417690912754324,
+      "signal_fired": true
+    },
+    {
+      "match_id": "884831a9a65c77daa2eb8adaaf5c357e",
+      "home_team": "Bournemouth",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 0.19052083333333333,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.2848174559639318,
+      "profit_pct": 1.606021819954915,
+      "signal_fired": false
+    },
+    {
+      "match_id": "894eee87683135b4828d1182e64b7cc6",
+      "home_team": "Ipswich Town",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "away",
+      "days_before": 6.878020833333333,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 9.46831755280408,
+      "profit_pct": 7.890264627336734,
+      "signal_fired": true
+    },
+    {
+      "match_id": "894f4c99817976a4ee3e306fe256e106",
+      "home_team": "Manchester City",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 0.8155208333333334,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.3952034671722942,
+      "profit_pct": 1.5502260746358825,
+      "signal_fired": true
+    },
+    {
+      "match_id": "8b33f64ddcb105de5cf96d781ae8bcbc",
+      "home_team": "Nottingham Forest",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.826903709940936,
+      "profit_pct": 4.252115233267706,
+      "signal_fired": true
+    },
+    {
+      "match_id": "8c2b434c9afe6fcc11232f7e549d9e20",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 1.0446875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.471360333142812,
+      "profit_pct": 3.8570670368253466,
+      "signal_fired": true
+    },
+    {
+      "match_id": "8db78fa09131c5d36c6409bc81dd192e",
+      "home_team": "Chelsea",
+      "away_team": "Southampton",
+      "bet3_outcome": "home",
+      "days_before": 8.888449074074074,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 4.344071736964452,
+      "profit_pct": 3.6200597808037096,
+      "signal_fired": true
+    },
+    {
+      "match_id": "916c3be683eeb058b9f2370f5880971b",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 0.2217939814814815,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 9.806230436726779,
+      "profit_pct": 10.895811596363087,
+      "signal_fired": true
+    },
+    {
+      "match_id": "9299cecc64b75d89fa192e5b3361fbf9",
+      "home_team": "Crystal Palace",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.5460838521485414,
+      "profit_pct": 3.940093169053935,
+      "signal_fired": true
+    },
+    {
+      "match_id": "99168b814177360ff8e6b01bb53a70de",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 4.9196990740740745,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 0.6114668009495716,
+      "profit_pct": 0.6114668009495716,
+      "signal_fired": true
+    },
+    {
+      "match_id": "99377c860d2ca3db23f315baa50b6645",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 0.9196875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 1.611550649225677,
+      "profit_pct": 1.7906118324729745,
+      "signal_fired": true
+    },
+    {
+      "match_id": "9b878684a95cdcd7b77ba588f916b483",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Manchester United",
+      "bet3_outcome": "away",
+      "days_before": 0.5238541666666666,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.058799398331743,
+      "profit_pct": 2.573499247914679,
+      "signal_fired": false
+    },
+    {
+      "match_id": "9c2df9d33f4ae9babac132a490ddd76d",
+      "home_team": "Liverpool",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 0.4613541666666667,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 7.503239740820732,
+      "profit_pct": 8.336933045356368,
+      "signal_fired": true
+    },
+    {
+      "match_id": "9d4b4b9aedc8b215eb1aefeccc88cfbb",
+      "home_team": "Bournemouth",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "away",
+      "days_before": 0.3467824074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 6.910659272951335,
+      "profit_pct": 8.638324091189169,
+      "signal_fired": false
+    },
+    {
+      "match_id": "9d538efe10c9f0756a86a05b2d5b9106",
+      "home_team": "Arsenal",
+      "away_team": "Brentford",
+      "bet3_outcome": "home",
+      "days_before": 0.732199074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 9.814707585408229,
+      "profit_pct": 10.905230650453587,
+      "signal_fired": true
+    },
+    {
+      "match_id": "9dbb0c7273505daf36408bfb5b1eaa56",
+      "home_team": "Bournemouth",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 0.21135416666666668,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.601458080194405,
+      "profit_pct": 2.001822600243006,
+      "signal_fired": false
+    },
+    {
+      "match_id": "9df45769484c50e6f42c95e60aaf0271",
+      "home_team": "Southampton",
+      "away_team": "Fulham",
+      "bet3_outcome": "away",
+      "days_before": 12.62804398148148,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 4.472564262611371,
+      "profit_pct": 3.194688759008122,
+      "signal_fired": true
+    },
+    {
+      "match_id": "9f953baba94a3b1a1a2130721282c1f9",
+      "home_team": "Aston Villa",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 5.0863657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 5.6478053939714385,
+      "profit_pct": 4.7065044949761985,
+      "signal_fired": true
+    },
+    {
+      "match_id": "a16896dc2a02c17db1b9a5522db8be06",
+      "home_team": "Liverpool",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 6.9613657407407405,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 0.5958692831870991,
+      "profit_pct": 0.49655773598924924,
+      "signal_fired": true
+    },
+    {
+      "match_id": "a297c3d3cc56d75bfa365b6ebf4f85ae",
+      "home_team": "Aston Villa",
+      "away_team": "Wolverhampton Wanderers",
+      "bet3_outcome": "home",
+      "days_before": 4.086354166666666,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 1.6129032258064626,
+      "profit_pct": 1.6129032258064626,
+      "signal_fired": true
+    },
+    {
+      "match_id": "a38b144468dea6cf30eec46e9b6efc81",
+      "home_team": "Everton",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 3.6280208333333333,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 2.971451219938686,
+      "profit_pct": 2.971451219938686,
+      "signal_fired": true
+    },
+    {
+      "match_id": "a4b9214b3fb191c94fb8574aa0c48ccb",
+      "home_team": "Ipswich Town",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 12.128032407407407,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 3.3117965819091353,
+      "profit_pct": 2.365568987077954,
+      "signal_fired": true
+    },
+    {
+      "match_id": "a4e8419fd4879d3e019537cda13eb112",
+      "home_team": "Fulham",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "away",
+      "days_before": 12.9196875,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 7.306889352818359,
+      "profit_pct": 5.219206680584543,
+      "signal_fired": true
+    },
+    {
+      "match_id": "a599cf990e1a1e1963d2a8ed16c3f293",
+      "home_team": "Manchester City",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 6.964705882352931,
+      "profit_pct": 8.705882352941163,
+      "signal_fired": false
+    },
+    {
+      "match_id": "a6151a5362fb6365b776880f17a142cc",
+      "home_team": "Arsenal",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 0.2842708333333333,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.2749003984063734,
+      "profit_pct": 1.5936254980079667,
+      "signal_fired": false
+    },
+    {
+      "match_id": "a82dbc3e753fc2917e493037abec0759",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 6.0655324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 3.7267893660531684,
+      "profit_pct": 3.105657805044307,
+      "signal_fired": true
+    },
+    {
+      "match_id": "ac9d59dd7555c122948f98b8b2a19c8e",
+      "home_team": "Fulham",
+      "away_team": "Arsenal",
+      "bet3_outcome": "away",
+      "days_before": 1.919699074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.12211668928087249,
+      "profit_pct": 0.13568521031208056,
+      "signal_fired": true
+    },
+    {
+      "match_id": "adea8e333c106f66a194808040fb6bb7",
+      "home_team": "Manchester United",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 6.9196990740740745,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 5.626515763945022,
+      "profit_pct": 4.688763136620852,
+      "signal_fired": true
+    },
+    {
+      "match_id": "af6efe5af0b10b63ac472bd39cd6b960",
+      "home_team": "Aston Villa",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 0.1905324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 8.040757065616177,
+      "profit_pct": 10.05094633202022,
+      "signal_fired": false
+    },
+    {
+      "match_id": "b3e08ef3342b0358cea9c82eabbc68a9",
+      "home_team": "Nottingham Forest",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 0.1905324074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.4433497536945765,
+      "profit_pct": 0.4926108374384184,
+      "signal_fired": true
+    },
+    {
+      "match_id": "b52655dd4e42aacd0e7281126f97b437",
+      "home_team": "Leicester City",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 0.2946875,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 3.0081743869209845,
+      "profit_pct": 3.76021798365123,
+      "signal_fired": false
+    },
+    {
+      "match_id": "b694a68b4da30ea78e1bfa60d7be6208",
+      "home_team": "Chelsea",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 9.315532407407407,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 8.372615039281698,
+      "profit_pct": 6.977179199401415,
+      "signal_fired": true
+    },
+    {
+      "match_id": "b747c3c47308ae5f4cf873ee949429d8",
+      "home_team": "Brentford",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 10.628020833333334,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 6.857418364067087,
+      "profit_pct": 4.898155974333633,
+      "signal_fired": true
+    },
+    {
+      "match_id": "bb081961bec18a0f02ea52df58647b6d",
+      "home_team": "Manchester United",
+      "away_team": "West Ham United",
+      "bet3_outcome": "home",
+      "days_before": 0.2217939814814815,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.0600838379133535,
+      "profit_pct": 3.4000931532370595,
+      "signal_fired": true
+    },
+    {
+      "match_id": "bd42f4bcba2364c88e3bd002b9a5beb3",
+      "home_team": "West Ham United",
+      "away_team": "Crystal Palace",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 3.226908992269088,
+      "profit_pct": 4.03363624033636,
+      "signal_fired": false
+    },
+    {
+      "match_id": "bdf11c0fed7acde852f8c9971600caaa",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 3.2321875,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 1.2611275964391808,
+      "profit_pct": 1.2611275964391808,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c0c456060eb22a752c40959f13065f59",
+      "home_team": "Aston Villa",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "home",
+      "days_before": 0.4926273148148148,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.40854472630174143,
+      "profit_pct": 0.45393858477971266,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c140e60a16a6b3763c14edf8447ff1d3",
+      "home_team": "Everton",
+      "away_team": "Leicester City",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.411861614497511,
+      "profit_pct": 6.0131795716639,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c3b563ad6f5007355d9c0ce0e7e6f13e",
+      "home_team": "Crystal Palace",
+      "away_team": "Leicester City",
+      "bet3_outcome": "home",
+      "days_before": 17.253020833333334,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 1.790281329923289,
+      "profit_pct": 1.278772378516635,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c523f2491a96d7d0784be90aac1d36d1",
+      "home_team": "Nottingham Forest",
+      "away_team": "Newcastle United",
+      "bet3_outcome": "away",
+      "days_before": 0.2530439814814815,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.061682736758698,
+      "profit_pct": 5.624091929731886,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c5f90c628d39b81cb2d9193f33986e94",
+      "home_team": "Manchester City",
+      "away_team": "Nottingham Forest",
+      "bet3_outcome": "home",
+      "days_before": 1.857199074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.7894736842105345,
+      "profit_pct": 6.4327485380117055,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c67645e3fa4dcc36a8ad2d585ea46dca",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "away",
+      "days_before": 0.23219907407407409,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.56184084372002,
+      "profit_pct": 3.2023010546500252,
+      "signal_fired": false
+    },
+    {
+      "match_id": "c87f3d3551a57bd560cb056ade831890",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Chelsea",
+      "bet3_outcome": "home",
+      "days_before": 1.0238541666666667,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 12.740656851642129,
+      "profit_pct": 14.156285390713478,
+      "signal_fired": true
+    },
+    {
+      "match_id": "c9109e8a707da4eb673f2cfcef34bd15",
+      "home_team": "West Ham United",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 5.023854166666666,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 1.7032927444340231,
+      "profit_pct": 1.4194106203616859,
+      "signal_fired": true
+    },
+    {
+      "match_id": "cbd9a395de1c2ead4d9b976610b3ccd7",
+      "home_team": "Ipswich Town",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 0.1905439814814815,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.331930361584071,
+      "profit_pct": 5.924367068426745,
+      "signal_fired": true
+    },
+    {
+      "match_id": "d04cb04488341db2a813e5af6426d955",
+      "home_team": "Fulham",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 6.294710648148148,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 3.3954362416107244,
+      "profit_pct": 2.8295302013422705,
+      "signal_fired": true
+    },
+    {
+      "match_id": "d2d3e65f6dd7b066ff8755dc20546719",
+      "home_team": "Liverpool",
+      "away_team": "Southampton",
+      "bet3_outcome": "home",
+      "days_before": 12.669699074074074,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 2.715730072889727,
+      "profit_pct": 1.9398071949212337,
+      "signal_fired": true
+    },
+    {
+      "match_id": "d3801e4fe720eaedfd96088545b7ded5",
+      "home_team": "Liverpool",
+      "away_team": "Arsenal",
+      "bet3_outcome": "home",
+      "days_before": 0.3155439814814815,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 0.3515994436717449,
+      "profit_pct": 0.4394993045896811,
+      "signal_fired": false
+    },
+    {
+      "match_id": "d3ace84aee8238229b71e41886d03e6c",
+      "home_team": "Arsenal",
+      "away_team": "Liverpool",
+      "bet3_outcome": "home",
+      "days_before": 1.0238657407407408,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 5.802578923966209,
+      "profit_pct": 6.44730991551801,
+      "signal_fired": true
+    },
+    {
+      "match_id": "d5a426bdd3e6e6441d24d2e801540198",
+      "home_team": "Manchester United",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "home",
+      "days_before": 0.9821875,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.28662420382165976,
+      "profit_pct": 0.318471337579622,
+      "signal_fired": true
+    },
+    {
+      "match_id": "d6f8814e6aae9414e050ebef471ec70a",
+      "home_team": "Everton",
+      "away_team": "Liverpool",
+      "bet3_outcome": "away",
+      "days_before": 0.5655324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 2.068965517241381,
+      "profit_pct": 2.586206896551726,
+      "signal_fired": false
+    },
+    {
+      "match_id": "d8d9f682aa2dddbf0bacb6f0451cc234",
+      "home_team": "Brentford",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "away",
+      "days_before": 0.2321875,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 4.991568296795947,
+      "profit_pct": 6.239460370994934,
+      "signal_fired": false
+    },
+    {
+      "match_id": "d9163188e3e3d9a8bf2525e2f9e3a553",
+      "home_team": "Leicester City",
+      "away_team": "Brighton and Hove Albion",
+      "bet3_outcome": "away",
+      "days_before": 3.0863657407407405,
+      "confidence_multiplier": 1.0,
+      "base_bet": 100,
+      "weighted_bet": 100.0,
+      "total_stake": 100.0,
+      "profit": 2.3563843758208094,
+      "profit_pct": 2.3563843758208094,
+      "signal_fired": true
+    },
+    {
+      "match_id": "da064af60c71d927aa19a7aae2dc60fe",
+      "home_team": "Wolverhampton Wanderers",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 0.8444200109950515,
+      "profit_pct": 1.0555250137438144,
+      "signal_fired": false
+    },
+    {
+      "match_id": "da134d1fd359ad4301fe6784ae3f1082",
+      "home_team": "Brighton and Hove Albion",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 6.4821990740740745,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 1.1333054743000304,
+      "profit_pct": 0.9444212285833586,
+      "signal_fired": true
+    },
+    {
+      "match_id": "dad7559a535bb7d8c292029361d80698",
+      "home_team": "Southampton",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 6.6280324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 6.0,
+      "profit_pct": 5.0,
+      "signal_fired": true
+    },
+    {
+      "match_id": "dae89832d3a009da366defb15dc6cdba",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Fulham",
+      "bet3_outcome": "home",
+      "days_before": 0.23221064814814815,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 4.149704530531864,
+      "profit_pct": 5.1871306631648295,
+      "signal_fired": false
+    },
+    {
+      "match_id": "dcf1380413740a8f8ee4c016c8550ea8",
+      "home_team": "Everton",
+      "away_team": "Bournemouth",
+      "bet3_outcome": "home",
+      "days_before": 0.2530324074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 4.5,
+      "profit_pct": 5.0,
+      "signal_fired": true
+    },
+    {
+      "match_id": "dd4e15590abf2809327c5847ac48224a",
+      "home_team": "Aston Villa",
+      "away_team": "Brentford",
+      "bet3_outcome": "home",
+      "days_before": 0.513449074074074,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 3.3212058212058224,
+      "profit_pct": 3.690228690228692,
+      "signal_fired": true
+    },
+    {
+      "match_id": "e2417386e2a4d3b08ba036f21c9b2c2b",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 1.3155324074074075,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 7.699389676218061,
+      "profit_pct": 8.554877418020068,
+      "signal_fired": true
+    },
+    {
+      "match_id": "e65a3a170d3def0f9d050d9aa1e1199a",
+      "home_team": "Aston Villa",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 0.19050925925925927,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 4.453081621321488,
+      "profit_pct": 5.56635202665186,
+      "signal_fired": false
+    },
+    {
+      "match_id": "e8c3ab310b4662b0a11609c6668abc13",
+      "home_team": "Manchester City",
+      "away_team": "Chelsea",
+      "bet3_outcome": "home",
+      "days_before": 0.23219907407407409,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.407193489104742,
+      "profit_pct": 1.7589918613809274,
+      "signal_fired": false
+    },
+    {
+      "match_id": "e9e3d58444716d36a3a2ee5e6ebede7c",
+      "home_team": "Aston Villa",
+      "away_team": "Ipswich Town",
+      "bet3_outcome": "home",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.8223601983631,
+      "profit_pct": 2.277950247953875,
+      "signal_fired": false
+    },
+    {
+      "match_id": "eb749753d96a4af7d4a56f949573a279",
+      "home_team": "Manchester United",
+      "away_team": "Liverpool",
+      "bet3_outcome": "away",
+      "days_before": 0.2946990740740741,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 1.8533495736906076,
+      "profit_pct": 2.3166869671132595,
+      "signal_fired": false
+    },
+    {
+      "match_id": "ec70abc1b197ccf08912f374f2dcaa83",
+      "home_team": "Chelsea",
+      "away_team": "Liverpool",
+      "bet3_outcome": "away",
+      "days_before": 6.3155324074074075,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 9.230769230769255,
+      "profit_pct": 7.692307692307712,
+      "signal_fired": true
+    },
+    {
+      "match_id": "eea597a56523ff47b477a010be877d10",
+      "home_team": "Manchester United",
+      "away_team": "Brentford",
+      "bet3_outcome": "home",
+      "days_before": 0.2530208333333333,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 2.6474679249565867,
+      "profit_pct": 2.9416310277295405,
+      "signal_fired": true
+    },
+    {
+      "match_id": "eedffe4c584ccce0bffa0839c970e2ff",
+      "home_team": "Southampton",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 0.9613541666666666,
+      "confidence_multiplier": 0.9,
+      "base_bet": 100,
+      "weighted_bet": 90.0,
+      "total_stake": 90.0,
+      "profit": 0.5837978715702405,
+      "profit_pct": 0.6486643017447117,
+      "signal_fired": true
+    },
+    {
+      "match_id": "eef18321a5e04c73f81d06c60cd1cde7",
+      "home_team": "Bournemouth",
+      "away_team": "Aston Villa",
+      "bet3_outcome": "home",
+      "days_before": 0.1905324074074074,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 0.2986812810412829,
+      "profit_pct": 0.3733516013016036,
+      "signal_fired": false
+    },
+    {
+      "match_id": "f4775f5074f79f71cbbddc74d64e9310",
+      "home_team": "Manchester United",
+      "away_team": "Chelsea",
+      "bet3_outcome": "home",
+      "days_before": 10.7321875,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 1.419354838709694,
+      "profit_pct": 1.0138248847926383,
+      "signal_fired": true
+    },
+    {
+      "match_id": "f9fdc5706a1b7f04bbed2a428a139a32",
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Everton",
+      "bet3_outcome": "home",
+      "days_before": 6.253043981481482,
+      "confidence_multiplier": 1.2,
+      "base_bet": 100,
+      "weighted_bet": 120.0,
+      "total_stake": 120.0,
+      "profit": 0.6185567010309398,
+      "profit_pct": 0.5154639175257832,
+      "signal_fired": true
+    },
+    {
+      "match_id": "fa18efa02f086a86224b6c5bfc582d70",
+      "home_team": "Chelsea",
+      "away_team": "Manchester City",
+      "bet3_outcome": "away",
+      "days_before": 0.3155439814814815,
+      "confidence_multiplier": 0.8,
+      "base_bet": 100,
+      "weighted_bet": 80.0,
+      "total_stake": 80.0,
+      "profit": 0.3447229471384361,
+      "profit_pct": 0.4309036839230451,
+      "signal_fired": false
+    },
+    {
+      "match_id": "fd8e42c2da38e9ac3a79532daa131f2a",
+      "home_team": "Chelsea",
+      "away_team": "Tottenham Hotspur",
+      "bet3_outcome": "home",
+      "days_before": 15.83636574074074,
+      "confidence_multiplier": 1.4,
+      "base_bet": 100,
+      "weighted_bet": 140.0,
+      "total_stake": 140.0,
+      "profit": 2.0691299165673342,
+      "profit_pct": 1.4779499404052387,
+      "signal_fired": true
+    }
+  ],
+  "confidence_stats": [
+    {
+      "days_before": 0.2947106481481481,
+      "multiplier": 0.8,
+      "profit": 2.9286726499763773,
+      "signal_fired": false
+    },
+    {
+      "days_before": 2.0446875,
+      "multiplier": 1.0,
+      "profit": 4.002935486023091,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.5238657407407408,
+      "multiplier": 0.8,
+      "profit": 0.2755453501722087,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2530324074074074,
+      "multiplier": 0.8,
+      "profit": 1.116016245806108,
+      "signal_fired": false
+    },
+    {
+      "days_before": 1.0863541666666667,
+      "multiplier": 0.9,
+      "profit": 2.0984358706986512,
+      "signal_fired": true
+    },
+    {
+      "days_before": 7.961354166666666,
+      "multiplier": 1.2,
+      "profit": 5.6038197274950505,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530208333333333,
+      "multiplier": 0.8,
+      "profit": 2.127203662218747,
+      "signal_fired": false
+    },
+    {
+      "days_before": 16.148865740740742,
+      "multiplier": 1.4,
+      "profit": 8.518943742824348,
+      "signal_fired": true
+    },
+    {
+      "days_before": 7.6696990740740745,
+      "multiplier": 1.2,
+      "profit": 2.857929515418519,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.0655324074074075,
+      "multiplier": 1.2,
+      "profit": 4.373576309795013,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.0655324074074075,
+      "multiplier": 1.0,
+      "profit": 3.4785584603159094,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.0238657407407405,
+      "multiplier": 1.2,
+      "profit": 3.712771084337348,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530208333333333,
+      "multiplier": 0.8,
+      "profit": 4.163591635916362,
+      "signal_fired": false
+    },
+    {
+      "days_before": 7.1905324074074075,
+      "multiplier": 1.2,
+      "profit": 1.641586867305051,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3155324074074074,
+      "multiplier": 0.8,
+      "profit": 0.4054054054054035,
+      "signal_fired": false
+    },
+    {
+      "days_before": 11.628032407407407,
+      "multiplier": 1.4,
+      "profit": 3.217759648572354,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530324074074074,
+      "multiplier": 0.8,
+      "profit": 2.560747021868238,
+      "signal_fired": false
+    },
+    {
+      "days_before": 10.02386574074074,
+      "multiplier": 1.4,
+      "profit": 3.133424013849435,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.8155208333333334,
+      "multiplier": 0.9,
+      "profit": 5.742075291034624,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2947106481481481,
+      "multiplier": 0.9,
+      "profit": 1.4737991266375445,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.8780324074074075,
+      "multiplier": 1.0,
+      "profit": 6.104651162790702,
+      "signal_fired": true
+    },
+    {
+      "days_before": 7.253020833333333,
+      "multiplier": 1.2,
+      "profit": 0.2504512635379115,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.21136574074074074,
+      "multiplier": 0.8,
+      "profit": 12.354290959155577,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.21136574074074074,
+      "multiplier": 0.8,
+      "profit": 6.9549549549549425,
+      "signal_fired": false
+    },
+    {
+      "days_before": 1.7321875,
+      "multiplier": 0.9,
+      "profit": 2.8193356737780277,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 8.50070783932047,
+      "signal_fired": true
+    },
+    {
+      "days_before": 7.1280324074074075,
+      "multiplier": 1.2,
+      "profit": 1.105326391670019,
+      "signal_fired": true
+    },
+    {
+      "days_before": 13.628032407407407,
+      "multiplier": 1.4,
+      "profit": 1.4885282596530374,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3155324074074074,
+      "multiplier": 0.8,
+      "profit": 2.173913043478251,
+      "signal_fired": false
+    },
+    {
+      "days_before": 3.6697106481481483,
+      "multiplier": 1.0,
+      "profit": 7.142857142857125,
+      "signal_fired": true
+    },
+    {
+      "days_before": 4.0863657407407405,
+      "multiplier": 1.0,
+      "profit": 1.0204081632653015,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530208333333333,
+      "multiplier": 0.9,
+      "profit": 2.0224719101123583,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.1280324074074075,
+      "multiplier": 1.2,
+      "profit": 1.3930321175830187,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946875,
+      "multiplier": 0.8,
+      "profit": 4.908733795993186,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.7738657407407408,
+      "multiplier": 0.9,
+      "profit": 0.17077798861480176,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.1488657407407405,
+      "multiplier": 1.0,
+      "profit": 5.439330543933053,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 1.412118780096307,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.8571875,
+      "multiplier": 1.2,
+      "profit": 7.094492167761501,
+      "signal_fired": true
+    },
+    {
+      "days_before": 20.357199074074074,
+      "multiplier": 1.4,
+      "profit": 1.3369713506139078,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530324074074074,
+      "multiplier": 0.9,
+      "profit": 11.25,
+      "signal_fired": true
+    },
+    {
+      "days_before": 12.878032407407407,
+      "multiplier": 1.4,
+      "profit": 4.192141214662541,
+      "signal_fired": true
+    },
+    {
+      "days_before": 13.586377314814815,
+      "multiplier": 1.4,
+      "profit": 0.14155712841255763,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.232199074074074,
+      "multiplier": 0.9,
+      "profit": 0.18487094757523437,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.9613541666666666,
+      "multiplier": 0.9,
+      "profit": 3.024313105356782,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.5238657407407405,
+      "multiplier": 1.2,
+      "profit": 2.8274846449481146,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.1176041666666667,
+      "multiplier": 0.9,
+      "profit": 1.0650887573964525,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3988657407407407,
+      "multiplier": 0.9,
+      "profit": 0.7426008968609779,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530324074074074,
+      "multiplier": 0.9,
+      "profit": 2.0795554255630435,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3988657407407407,
+      "multiplier": 0.9,
+      "profit": 3.1563981042654063,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946875,
+      "multiplier": 0.9,
+      "profit": 3.0910303434478124,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2321875,
+      "multiplier": 0.8,
+      "profit": 2.1181367056186957,
+      "signal_fired": false
+    },
+    {
+      "days_before": 1.7321875,
+      "multiplier": 0.9,
+      "profit": 8.070907194994788,
+      "signal_fired": true
+    },
+    {
+      "days_before": 2.8363657407407405,
+      "multiplier": 1.0,
+      "profit": 0.36021290195400013,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.044699074074074,
+      "multiplier": 0.9,
+      "profit": 6.716832171714046,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.21136574074074074,
+      "multiplier": 0.8,
+      "profit": 2.952182952182966,
+      "signal_fired": false
+    },
+    {
+      "days_before": 5.1071875,
+      "multiplier": 1.2,
+      "profit": 2.210184182015169,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.3988657407407405,
+      "multiplier": 1.2,
+      "profit": 5.062751435546545,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.1905324074074075,
+      "multiplier": 1.2,
+      "profit": 0.3151917122774819,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.857199074074074,
+      "multiplier": 1.0,
+      "profit": 0.615137737362943,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.1280324074074075,
+      "multiplier": 1.2,
+      "profit": 0.24649459676699337,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.0238541666666667,
+      "multiplier": 0.9,
+      "profit": 5.692933157957668,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.8,
+      "profit": 5.988098966489204,
+      "signal_fired": false
+    },
+    {
+      "days_before": 6.2946990740740745,
+      "multiplier": 1.2,
+      "profit": 2.2012871523130286,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.1488657407407408,
+      "multiplier": 0.9,
+      "profit": 1.408250355618776,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 5.691713347498535,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 7.548808515785652,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.1905439814814815,
+      "multiplier": 0.9,
+      "profit": 0.17928712025991445,
+      "signal_fired": true
+    },
+    {
+      "days_before": 15.253020833333334,
+      "multiplier": 1.4,
+      "profit": 3.4248627059410808,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530208333333333,
+      "multiplier": 0.9,
+      "profit": 6.716832171714046,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.669699074074074,
+      "multiplier": 1.0,
+      "profit": 2.3866527008828484,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.1280324074074075,
+      "multiplier": 0.9,
+      "profit": 1.5612941014332904,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.0863657407407408,
+      "multiplier": 0.9,
+      "profit": 0.2200267734373682,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.1176157407407408,
+      "multiplier": 0.9,
+      "profit": 0.4186046511627808,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.3363657407407405,
+      "multiplier": 1.2,
+      "profit": 6.785046728971963,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.5655439814814813,
+      "multiplier": 1.0,
+      "profit": 3.2815198618307306,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.919699074074074,
+      "multiplier": 0.9,
+      "profit": 3.0143540669856463,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.1280324074074075,
+      "multiplier": 0.9,
+      "profit": 2.1691154676716025,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.2530208333333333,
+      "multiplier": 0.9,
+      "profit": 2.988929889298902,
+      "signal_fired": true
+    },
+    {
+      "days_before": 12.294699074074074,
+      "multiplier": 1.4,
+      "profit": 0.014015416958699234,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.8571875,
+      "multiplier": 0.9,
+      "profit": 3.8673158855751666,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.1905324074074074,
+      "multiplier": 0.8,
+      "profit": 9.893850042122992,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2947106481481481,
+      "multiplier": 0.8,
+      "profit": 7.018255578093303,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2530324074074074,
+      "multiplier": 0.8,
+      "profit": 1.241565452091777,
+      "signal_fired": false
+    },
+    {
+      "days_before": 1.1280439814814816,
+      "multiplier": 0.9,
+      "profit": 1.2081542466250994,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.9613541666666666,
+      "multiplier": 0.9,
+      "profit": 0.4650965774313818,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.857199074074074,
+      "multiplier": 1.0,
+      "profit": 6.968345018058216,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.19052083333333333,
+      "multiplier": 0.9,
+      "profit": 4.920634920634939,
+      "signal_fired": true
+    },
+    {
+      "days_before": 7.0238657407407405,
+      "multiplier": 1.2,
+      "profit": 2.544789762340045,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.669699074074074,
+      "multiplier": 1.0,
+      "profit": 2.9417690912754324,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.19052083333333333,
+      "multiplier": 0.8,
+      "profit": 1.2848174559639318,
+      "signal_fired": false
+    },
+    {
+      "days_before": 6.878020833333333,
+      "multiplier": 1.2,
+      "profit": 9.46831755280408,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.8155208333333334,
+      "multiplier": 0.9,
+      "profit": 1.3952034671722942,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 3.826903709940936,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.0446875,
+      "multiplier": 0.9,
+      "profit": 3.471360333142812,
+      "signal_fired": true
+    },
+    {
+      "days_before": 8.888449074074074,
+      "multiplier": 1.2,
+      "profit": 4.344071736964452,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2217939814814815,
+      "multiplier": 0.9,
+      "profit": 9.806230436726779,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 3.5460838521485414,
+      "signal_fired": true
+    },
+    {
+      "days_before": 4.9196990740740745,
+      "multiplier": 1.0,
+      "profit": 0.6114668009495716,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.9196875,
+      "multiplier": 0.9,
+      "profit": 1.611550649225677,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.5238541666666666,
+      "multiplier": 0.8,
+      "profit": 2.058799398331743,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.4613541666666667,
+      "multiplier": 0.9,
+      "profit": 7.503239740820732,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3467824074074074,
+      "multiplier": 0.8,
+      "profit": 6.910659272951335,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.732199074074074,
+      "multiplier": 0.9,
+      "profit": 9.814707585408229,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.21135416666666668,
+      "multiplier": 0.8,
+      "profit": 1.601458080194405,
+      "signal_fired": false
+    },
+    {
+      "days_before": 12.62804398148148,
+      "multiplier": 1.4,
+      "profit": 4.472564262611371,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.0863657407407405,
+      "multiplier": 1.2,
+      "profit": 5.6478053939714385,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.9613657407407405,
+      "multiplier": 1.2,
+      "profit": 0.5958692831870991,
+      "signal_fired": true
+    },
+    {
+      "days_before": 4.086354166666666,
+      "multiplier": 1.0,
+      "profit": 1.6129032258064626,
+      "signal_fired": true
+    },
+    {
+      "days_before": 3.6280208333333333,
+      "multiplier": 1.0,
+      "profit": 2.971451219938686,
+      "signal_fired": true
+    },
+    {
+      "days_before": 12.128032407407407,
+      "multiplier": 1.4,
+      "profit": 3.3117965819091353,
+      "signal_fired": true
+    },
+    {
+      "days_before": 12.9196875,
+      "multiplier": 1.4,
+      "profit": 7.306889352818359,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.8,
+      "profit": 6.964705882352931,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2842708333333333,
+      "multiplier": 0.8,
+      "profit": 1.2749003984063734,
+      "signal_fired": false
+    },
+    {
+      "days_before": 6.0655324074074075,
+      "multiplier": 1.2,
+      "profit": 3.7267893660531684,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.919699074074074,
+      "multiplier": 0.9,
+      "profit": 0.12211668928087249,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.9196990740740745,
+      "multiplier": 1.2,
+      "profit": 5.626515763945022,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.1905324074074074,
+      "multiplier": 0.8,
+      "profit": 8.040757065616177,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.1905324074074074,
+      "multiplier": 0.9,
+      "profit": 0.4433497536945765,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946875,
+      "multiplier": 0.8,
+      "profit": 3.0081743869209845,
+      "signal_fired": false
+    },
+    {
+      "days_before": 9.315532407407407,
+      "multiplier": 1.2,
+      "profit": 8.372615039281698,
+      "signal_fired": true
+    },
+    {
+      "days_before": 10.628020833333334,
+      "multiplier": 1.4,
+      "profit": 6.857418364067087,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2217939814814815,
+      "multiplier": 0.9,
+      "profit": 3.0600838379133535,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.8,
+      "profit": 3.226908992269088,
+      "signal_fired": false
+    },
+    {
+      "days_before": 3.2321875,
+      "multiplier": 1.0,
+      "profit": 1.2611275964391808,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.4926273148148148,
+      "multiplier": 0.9,
+      "profit": 0.40854472630174143,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.9,
+      "profit": 5.411861614497511,
+      "signal_fired": true
+    },
+    {
+      "days_before": 17.253020833333334,
+      "multiplier": 1.4,
+      "profit": 1.790281329923289,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530439814814815,
+      "multiplier": 0.9,
+      "profit": 5.061682736758698,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.857199074074074,
+      "multiplier": 0.9,
+      "profit": 5.7894736842105345,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.23219907407407409,
+      "multiplier": 0.8,
+      "profit": 2.56184084372002,
+      "signal_fired": false
+    },
+    {
+      "days_before": 1.0238541666666667,
+      "multiplier": 0.9,
+      "profit": 12.740656851642129,
+      "signal_fired": true
+    },
+    {
+      "days_before": 5.023854166666666,
+      "multiplier": 1.2,
+      "profit": 1.7032927444340231,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.1905439814814815,
+      "multiplier": 0.9,
+      "profit": 5.331930361584071,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.294710648148148,
+      "multiplier": 1.2,
+      "profit": 3.3954362416107244,
+      "signal_fired": true
+    },
+    {
+      "days_before": 12.669699074074074,
+      "multiplier": 1.4,
+      "profit": 2.715730072889727,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3155439814814815,
+      "multiplier": 0.8,
+      "profit": 0.3515994436717449,
+      "signal_fired": false
+    },
+    {
+      "days_before": 1.0238657407407408,
+      "multiplier": 0.9,
+      "profit": 5.802578923966209,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.9821875,
+      "multiplier": 0.9,
+      "profit": 0.28662420382165976,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.5655324074074074,
+      "multiplier": 0.8,
+      "profit": 2.068965517241381,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2321875,
+      "multiplier": 0.8,
+      "profit": 4.991568296795947,
+      "signal_fired": false
+    },
+    {
+      "days_before": 3.0863657407407405,
+      "multiplier": 1.0,
+      "profit": 2.3563843758208094,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.8,
+      "profit": 0.8444200109950515,
+      "signal_fired": false
+    },
+    {
+      "days_before": 6.4821990740740745,
+      "multiplier": 1.2,
+      "profit": 1.1333054743000304,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.6280324074074075,
+      "multiplier": 1.2,
+      "profit": 6.0,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.23221064814814815,
+      "multiplier": 0.8,
+      "profit": 4.149704530531864,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2530324074074074,
+      "multiplier": 0.9,
+      "profit": 4.5,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.513449074074074,
+      "multiplier": 0.9,
+      "profit": 3.3212058212058224,
+      "signal_fired": true
+    },
+    {
+      "days_before": 1.3155324074074075,
+      "multiplier": 0.9,
+      "profit": 7.699389676218061,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.19050925925925927,
+      "multiplier": 0.8,
+      "profit": 4.453081621321488,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.23219907407407409,
+      "multiplier": 0.8,
+      "profit": 1.407193489104742,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.8,
+      "profit": 1.8223601983631,
+      "signal_fired": false
+    },
+    {
+      "days_before": 0.2946990740740741,
+      "multiplier": 0.8,
+      "profit": 1.8533495736906076,
+      "signal_fired": false
+    },
+    {
+      "days_before": 6.3155324074074075,
+      "multiplier": 1.2,
+      "profit": 9.230769230769255,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.2530208333333333,
+      "multiplier": 0.9,
+      "profit": 2.6474679249565867,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.9613541666666666,
+      "multiplier": 0.9,
+      "profit": 0.5837978715702405,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.1905324074074074,
+      "multiplier": 0.8,
+      "profit": 0.2986812810412829,
+      "signal_fired": false
+    },
+    {
+      "days_before": 10.7321875,
+      "multiplier": 1.4,
+      "profit": 1.419354838709694,
+      "signal_fired": true
+    },
+    {
+      "days_before": 6.253043981481482,
+      "multiplier": 1.2,
+      "profit": 0.6185567010309398,
+      "signal_fired": true
+    },
+    {
+      "days_before": 0.3155439814814815,
+      "multiplier": 0.8,
+      "profit": 0.3447229471384361,
+      "signal_fired": false
+    },
+    {
+      "days_before": 15.83636574074074,
+      "multiplier": 1.4,
+      "profit": 2.0691299165673342,
+      "signal_fired": true
+    }
+  ]
+}
