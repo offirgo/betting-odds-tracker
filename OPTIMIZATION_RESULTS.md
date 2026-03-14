@@ -236,9 +236,70 @@ Strategy:
 
 ## Optimization #6: Bankroll Management (Kelly Criterion)
 
-**Status**: Pending
+**Concept**: Dynamic bet sizing based on edge using Kelly Criterion formula.
 
-**Expected Impact**: +20-40% long-term profit
+Strategy:
+- Kelly bet = bankroll × edge × kelly_fraction
+- Edge = guaranteed profit percentage for arbitrage
+- Use 25% fractional Kelly for safety (quarter Kelly)
+- Min bet: £50, Max bet: 20% of bankroll
+- Allows compounding by betting more when bankroll grows
+
+**Test Season**: 24/25 (hold-out validation)
+**Initial Bankroll**: £10,000
+**Kelly Fraction**: 25%
+
+### Results
+
+#### Threshold 0.55 (Original)
+| Metric | Fixed Bet (£100) | Kelly Criterion | Change |
+|--------|------------------|-----------------|--------|
+| Profit | £584.62 | £956.86 | **+£372.24 (+63.7%)** |
+| ROI | 5.85% | 9.57% | +3.72% |
+| Completed Bets | 160 | 160 | 0 |
+| Avg Bet Size | £100 | £104.81 | +4.8% |
+| Avg Profit/Bet | £3.65 | £5.98 | +63.8% |
+
+**Bet sizing**:
+- Min: £50, Max: £388.76, Avg: £104.81
+- Bet size scales with bankroll growth
+
+#### Threshold 0.50
+| Metric | Fixed Bet (£100) | Kelly Criterion | Change |
+|--------|------------------|-----------------|--------|
+| Profit | £197.53 | £213.22 | **+£15.69 (+7.9%)** |
+| ROI | 1.98% | 2.13% | +0.15% |
+| Completed Bets | 86 | 86 | 0 |
+| Avg Bet Size | £100 | £74.25 | -25.8% |
+| Avg Profit/Bet | £2.30 | £2.48 | +7.8% |
+
+**Bet sizing**:
+- Min: £50, Max: £215.99, Avg: £74.25
+- Smaller average bets but better capital preservation
+
+### Overall Conclusion
+
+**Successful Optimization!** ✅
+
+- Threshold 0.55: +63.7% profit improvement (£584.62 → £956.86)
+- Threshold 0.50: +7.9% profit improvement (£197.53 → £213.22)
+- Works for both thresholds
+- Enables compounding through dynamic bet sizing
+
+**Why it works**:
+- Arbitrage has guaranteed returns - perfect for Kelly
+- Bet sizing adjusts to edge quality
+- Bankroll growth compounds over time
+- Conservative 25% Kelly reduces volatility
+- Safety limits (min £50, max 20%) prevent extremes
+
+**Recommendation**: ✅ **USE Kelly Criterion**
+- Significant profit improvement with same risk
+- Especially effective with 0.55 threshold (+64%)
+- Natural compounding effect
+- 25% fractional Kelly balances growth and safety
+
+**Implementation**: `src/simulator/kelly_criterion_sim.py`
 
 ---
 
