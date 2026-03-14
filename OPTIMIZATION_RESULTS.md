@@ -180,9 +180,49 @@ Strategy:
 
 ## Optimization #4: Multi-Threshold Ensemble
 
-**Status**: Pending
+**Concept**: Combine signals from both threshold 0.55 and 0.50 - bet if EITHER threshold signals.
 
-**Expected Impact**: +5-8% profit
+Strategy:
+- Monitor both `should_bet_*_now` (0.55) and `should_bet_*_now_t050` (0.50)
+- Place bet if either threshold signals
+- Aims to combine conservative precision with aggressive coverage
+
+**Test Season**: 24/25 (hold-out validation)
+**Base Bet**: £100
+
+### Results
+
+| Metric | Threshold 0.55 | Threshold 0.50 | Ensemble | vs Best |
+|--------|----------------|----------------|----------|---------|
+| Profit | £584.62 | £197.53 | £250.01 | **-£334.61 (-57.2%)** |
+| ROI | 5.85% | 1.98% | 2.50% | -3.35% |
+| Completed Bets | 160 | 86 | 98 | -62 |
+| Avg Profit/Bet | £3.65 | £2.30 | £2.55 | -£1.10 |
+
+**Signal breakdown (ensemble)**:
+- Threshold 0.55 only: 36 (36.7%)
+- Threshold 0.50 only: 56 (57.1%)
+- Both thresholds: 6 (6.1%)
+
+### Overall Conclusion
+
+**Failed Optimization**:
+- Performs worse than best individual threshold (0.55)
+- Gets fewer bets than expected (98 vs 160 from 0.55 alone)
+- Average profit per bet (£2.55) between the two thresholds
+- No synergistic benefit from combining signals
+
+**Why it failed**:
+- Different thresholds trigger at different times
+- By the time second threshold signals, odds may have changed
+- Conservative threshold (0.55) already provides best results
+- Adding aggressive signals dilutes quality without adding enough volume
+
+**Recommendation**: ❌ **Do NOT use ensemble**
+- Stick with single best threshold (0.55 original)
+- Ensemble adds complexity without benefit
+
+**Implementation**: `src/simulator/multi_threshold_ensemble_sim.py` (for reference only)
 
 ---
 
