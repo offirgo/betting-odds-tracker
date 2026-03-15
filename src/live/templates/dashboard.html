@@ -445,19 +445,36 @@
 
             emptyState.style.display = 'none';
 
+            // Preserve open accordion state before re-rendering
+            const openAccordions = new Set();
+            container.querySelectorAll('.accordion-content.open').forEach(el => {
+                openAccordions.add(el.id);
+            });
+
             // Merge predictions with matches by match_id
             const predictionsMap = {};
             (currentData.predictions || []).forEach(pred => {
                 predictionsMap[pred.match_id] = pred;
             });
 
+            const activeBetsMap = currentData.active_bets || {};
+
             container.innerHTML = currentData.matches.map((match, index) => {
                 const prediction = predictionsMap[match.match_id];
-                return createMatchCard(match, prediction, index);
+                const betState = activeBetsMap[match.match_id] || null;
+                return createMatchCard(match, prediction, betState, index);
             }).join('');
+
+            // Restore open accordions
+            openAccordions.forEach(accordionId => {
+                const content = document.getElementById(accordionId);
+                const toggle = document.getElementById(`toggle-${accordionId}`);
+                if (content) content.classList.add('open');
+                if (toggle) toggle.classList.add('open');
+            });
         }
 
-        function createMatchCard(match, prediction, index) {
+        function createMatchCard(match, prediction, betState, index) {
             const odds = match.best_odds;
             const arb = match.arbitrage || {};
             const hasArb = arb.has_arbitrage || false;
@@ -481,6 +498,10 @@
                     decision = "📊 TRACKING";
                     reason = recommendation.reason + ' (' + recommendation.next_steps + ')';
                     decisionClass = "info";
+                } else if (action === 'SKIP') {
+                    decision = "🚫 SKIP";
+                    reason = recommendation.reason;
+                    decisionClass = "muted";
                 } else {
                     decision = "⏸ WAIT";
                     reason = recommendation.reason;
@@ -518,12 +539,22 @@
                         <div class="accordion-summary">
                             <div style="flex: 1; min-width: 200px;">
                                 <div class="summary-teams">${match.home_team} vs ${match.away_team}</div>
-                                <div class="summary-time">in ${hoursUntil}h</div>
+                                <div class="summary-time">in ${hoursUntil}h
+                                    ${prediction?.tracking_started_hours_before
+                                        ? `<span style="color: #64748b; font-size: 0.7rem; margin-left: 6px;">· tracking since ${prediction.tracking_started_hours_before}h before</span>`
+                                        : ''}
+                                </div>
                             </div>
                             <div style="flex: 0 0 auto;">
                                 <span class="summary-odds">H ${odds.home.toFixed(2)} | D ${odds.draw.toFixed(2)} | A ${odds.away.toFixed(2)}</span>
                             </div>
-                            <div style="flex: 0 0 auto;">
+                            <div style="flex: 0 0 auto; display: flex; align-items: center; gap: 6px;">
+                                ${betState?.complete
+                                    ? `<span class="badge success">✅ COMPLETE ${betState.profit_pct >= 0 ? '+' : ''}${betState.profit_pct?.toFixed(2)}%</span>`
+                                    : betState && (betState.home.placed || betState.draw.placed || betState.away.placed)
+                                        ? `<span class="badge warning">⏳ ${['home','draw','away'].filter(o => betState[o].placed).length}/3 PLACED</span>`
+                                        : ''
+                                }
                                 <span class="badge ${decisionClass}">${decision}${hasArb ? ` ${arb.profit_pct?.toFixed(2) || '0.00'}%` : ''}</span>
                             </div>
                         </div>
@@ -534,6 +565,9 @@
                         <div class="accordion-details">
                             <div class="match-time" style="margin-bottom: 15px; text-align: left;">
                                 ${formatTime(match.commence_time)}
+                                ${prediction?.tracking_started_hours_before
+                                    ? `<span style="font-size: 0.75rem; color: #64748b; margin-left: 10px;">Tracking started ${prediction.tracking_started_hours_before}h before kickoff</span>`
+                                    : ''}
                             </div>
 
                             <div style="background: #0a0f1e; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
@@ -577,6 +611,15 @@
                             </div>
 
                             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                                ${prediction && prediction.arbitrage_prediction ? `
+                                    <div style="font-size: 0.875rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                                        <strong>Arbitrage Gate:</strong>
+                                        <span style="color: ${prediction.arbitrage_prediction.will_have_arbitrage ? '#10b981' : '#ef4444'}; font-weight: 600;">
+                                            ${prediction.arbitrage_prediction.will_have_arbitrage ? '✓ PASS' : '✗ FAIL'}
+                                        </span>
+                                        <span style="color: #64748b; font-size: 0.75rem;">(p=${(prediction.arbitrage_prediction.probability * 100).toFixed(1)}%)</span>
+                                    </div>
+                                ` : ''}
                                 ${prediction && prediction.timing_predictions ? `
                                     <div style="font-size: 0.875rem; margin-bottom: 10px;"><strong>ML Timing Predictions:</strong></div>
                                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.8rem;">
@@ -610,6 +653,52 @@
                                         ${recommendation.monitoring ? `<div style="margin-top: 8px; color: #f59e0b; font-size: 0.7rem;">⚠ ${recommendation.monitoring}</div>` : ''}
                                     </div>
                                 ` : ''}
+                                ${prediction && recommendation && recommendation.kelly_sizing ? `
+                                    <div style="margin-top: 8px; padding: 10px; background: #0a1628; border-radius: 4px; border: 1px solid #1d4ed8; font-size: 0.75rem;">
+                                        <div style="color: #93c5fd; margin-bottom: 4px;"><strong>💰 Kelly Bet Size:</strong></div>
+                                        <div style="color: #e2e8f0; font-size: 1rem; font-weight: 700;">£${recommendation.kelly_sizing.recommended_bet.toFixed(2)}</div>
+                                        <div style="color: #64748b; margin-top: 4px;">${recommendation.kelly_sizing.note}</div>
+                                    </div>
+                                ` : ''}
+                                ${betState ? (() => {
+                                    const legs = ['home', 'draw', 'away'];
+                                    const legHtml = legs.map(o => {
+                                        const leg = betState[o];
+                                        if (leg.placed) {
+                                            return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#052e16;border:1px solid #10b981;border-radius:4px;">
+                                                <span style="font-size:1rem;">🟢</span>
+                                                <div>
+                                                    <div style="color:#10b981;font-weight:600;font-size:0.8rem;">${o.toUpperCase()} — PLACED</div>
+                                                    <div style="color:#6ee7b7;font-size:0.7rem;">@ ${leg.odds?.toFixed(2) || '—'}</div>
+                                                </div>
+                                            </div>`;
+                                        } else {
+                                            return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#1c1017;border:1px solid #f59e0b;border-radius:4px;">
+                                                <span style="font-size:1rem;">🟡</span>
+                                                <div>
+                                                    <div style="color:#f59e0b;font-weight:600;font-size:0.8rem;">${o.toUpperCase()} — WAITING</div>
+                                                    <div style="color:#fcd34d;font-size:0.7rem;">awaiting signal</div>
+                                                </div>
+                                            </div>`;
+                                        }
+                                    }).join('');
+
+                                    const profitHtml = betState.complete ? (() => {
+                                        const p = betState.profit_pct;
+                                        const color = p >= 0 ? '#10b981' : '#ef4444';
+                                        const sign = p >= 0 ? '+' : '';
+                                        return `<div style="margin-top:10px;padding:10px;background:${p >= 0 ? '#052e16' : '#2d0a0a'};border:1px solid ${color};border-radius:4px;text-align:center;">
+                                            <div style="color:#94a3b8;font-size:0.7rem;margin-bottom:2px;">GUARANTEED PROFIT</div>
+                                            <div style="color:${color};font-size:1.4rem;font-weight:800;">${sign}${p.toFixed(3)}%</div>
+                                        </div>`;
+                                    })() : '';
+
+                                    return `<div style="margin-top:10px;">
+                                        <div style="font-size:0.8rem;color:#94a3b8;margin-bottom:6px;"><strong>Bet Status:</strong></div>
+                                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">${legHtml}</div>
+                                        ${profitHtml}
+                                    </div>`;
+                                })() : ''}
                             </div>
                         </div>
                     </div>
